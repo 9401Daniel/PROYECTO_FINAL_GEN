@@ -8,7 +8,7 @@ public class BombThrower : MonoBehaviour
     [SerializeField] private float spawnOffset = 0.5f;
     [Header("Bomb Physics")]
     [SerializeField, Min(1f)] private float throwDistance = 2f;
-    [SerializeField, Range(5f, 85f)] private float launchAngle = 45f; // este rango evita tener ángulos muy pequeños o muy grandes donde no se veria como un lanzamiento
+    [SerializeField, Range(5f, 85f)] private float launchAngle = 45f; // este rango evita tener ángulos muy pequeños o muy grandes donde no se vería como un lanzamiento.
     [Header("Thrower Configuration")]
     [SerializeField] private int maxCharges = 3;
     [SerializeField] private float cooldownPerCharge = 60f;
@@ -35,12 +35,14 @@ public class BombThrower : MonoBehaviour
     {
         currentCharges = maxCharges;
         cooldownTimer = 0f;
-        inputActions.Player.Enable();
+        inputActions.Player.Move.Enable();
+        inputActions.Player.Attack.Enable();
     }
 
     private void OnDisable()
     {
-        inputActions.Player.Disable();
+        inputActions.Player.Move.Disable();
+        inputActions.Player.Attack.Disable();
     }
 
     private void Update()

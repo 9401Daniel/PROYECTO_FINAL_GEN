@@ -14,12 +14,12 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnEnable()
     {
-        inputActions.Player.Enable();
+        inputActions.Player.Move.Enable();
     }
 
     private void OnDisable()
     {
-        inputActions.Player.Disable();
+        inputActions.Player.Move.Disable();
     }
 
     void Update()
