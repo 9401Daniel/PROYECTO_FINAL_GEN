@@ -29,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
         inputActions.Player.Move.Enable();
         inputActions.Player.Attack.Enable();
 
-        inputActions.Player.Attack.performed += OnThrow;
+        //inputActions.Player.Attack.performed += OnThrow;
     }
 
     private void OnDisable()
@@ -37,14 +37,14 @@ public class PlayerMovement : MonoBehaviour
         inputActions.Player.Move.Disable();
         inputActions.Player.Attack.Disable();
 
-        inputActions.Player.Attack.performed -= OnThrow;
+        //inputActions.Player.Attack.performed -= OnThrow;
     }
 
     void Update()
     {
         moveInput = inputActions.Player.Move.ReadValue<Vector2>();
         //Lock Movement while throwing
-        if(isThrowing)
+        if (isThrowing)
         {
             moveInput = Vector2.zero;
             return;
@@ -54,6 +54,7 @@ public class PlayerMovement : MonoBehaviour
         Move();
     }
 
+    /*
     private void OnThrow(UnityEngine.InputSystem.InputAction.CallbackContext context)
     {
         if (isThrowing)
@@ -70,15 +71,15 @@ public class PlayerMovement : MonoBehaviour
 
         UpdateDirection();
         UpdateAnimation();
-    }
+    } */
 
     private void UpdateDirection()
     {
-        if(moveInput == Vector2.zero)
-        return;
-        // Side Movement    
+        if (moveInput == Vector2.zero)
+            return;
+        // Side Movement
         if (Mathf.Abs(moveInput.x) > Mathf.Abs(moveInput.y))
-        {                
+        {
             currentDirection = 1;
             //Side Orientation
             if (moveInput.x > 0)
@@ -91,7 +92,7 @@ public class PlayerMovement : MonoBehaviour
         {
             currentDirection = 2;
             spriteRenderer.flipX = false;
-        }        
+        }
         // Down Movement
         else if (moveInput.y < 0)
         {
