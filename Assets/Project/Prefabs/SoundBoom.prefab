@@ -108,6 +108,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Bomb
   explosionEffect: {fileID: 0}
   lifetime: 10
+  hearingRadius: 8
+  enemyLayerMask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!65 &2855925454435177938
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -154,5 +158,5 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 32
+  m_Constraints: 48
   m_CollisionDetection: 0

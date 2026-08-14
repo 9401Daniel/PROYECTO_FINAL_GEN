@@ -9,7 +9,7 @@ public class EnemyAI : MonoBehaviour
     // Patrol: recorre waypoints en bucle
     // Chase: persigue al jugador porque lo tiene detectado
     // Search: perdió al jugador de vista, va al último punto donde lo vio y espera un rato antes de volver a patrullar
-    public enum State { Patrol, Chase, Search }
+    public enum State { Patrol, Chase, Search, Alert}
     public State currentState = State.Patrol; // Estado inicial del enemigo
 
     [Header("Patrulla")]
@@ -32,6 +32,12 @@ public class EnemyAI : MonoBehaviour
     private float searchTimer;           // Cuenta regresiva activa mientras está en estado Search
     private Vector3 lastKnownPosition;   // Última posición registrada del jugador antes de perderlo
 
+    [Header("Alerta (bombas de ruido)")]
+    public float alertTime = 3f;         // Tiempo que se queda "revisando" el punto del ruido antes de volver a patrullar
+    public float lookAroundSpeed = 60f;  // Velocidad de giro (grados/seg) mientras está en alerta, simula que está revisando la zona
+    private float alertTimer;            // Cuenta regresiva activa mientras está en estado Alert
+    private Vector3 noisePosition;       // Posición donde ocurrió el ruido
+
     private NavMeshAgent agent; // Referencia al componente que maneja el pathfinding y el movimiento
 
     void Start()
@@ -48,6 +54,7 @@ public class EnemyAI : MonoBehaviour
             case State.Patrol: Patrol(); break;
             case State.Chase: Chase(); break;
             case State.Search: Search(); break;
+            case State.Alert: Alert(); break;
         }
 
         // La detección se evalúa en todo momento, sin importar el estado,
@@ -92,6 +99,43 @@ public class EnemyAI : MonoBehaviour
             if (waypoints.Length > 0) GoToNextWaypoint();
         }
     }
+
+
+    void Alert()
+    {
+        agent.speed = patrolSpeed;
+
+        // Mientras se acerca al punto del ruido, sigue moviéndose normal
+        if (!agent.pathPending && agent.remainingDistance < 0.5f)
+        {
+            // Ya llegó: se queda girando en el lugar, "revisando" la zona
+            agent.isStopped = true;
+            transform.Rotate(Vector3.up, lookAroundSpeed * Time.deltaTime);
+
+            alertTimer -= Time.deltaTime;
+            if (alertTimer <= 0f)
+            {
+                agent.isStopped = false;
+                currentState = State.Patrol;
+                if (waypoints.Length > 0) GoToNextWaypoint();
+            }
+        }
+    }
+
+    // Llamado desde afuera (por ejemplo, desde el script de la bomba de ruido) cuando el enemigo
+    // está dentro del radio de alcance del sonido
+    public void HearNoise(Vector3 position)
+    {
+        // Si ya está persiguiendo al jugador, el ruido no lo distrae de la persecución
+        if (currentState == State.Chase) return;
+
+        noisePosition = position;
+        currentState = State.Alert;
+        alertTimer = alertTime;
+        agent.isStopped = false;
+        agent.SetDestination(noisePosition);
+    }
+
 
     void CheckFieldOfView()
     {
