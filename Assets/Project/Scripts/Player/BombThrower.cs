@@ -10,6 +10,7 @@ public class BombThrower : MonoBehaviour
     [SerializeField, Min(1f)] private float throwDistance = 2f;
     [SerializeField, Range(5f, 85f)] private float launchAngle = 45f; // este rango evita tener ángulos muy pequeños o muy grandes donde no se vería como un lanzamiento.
     [Header("Thrower Configuration")]
+    [SerializeField] private Animator animator;
     [SerializeField] private int maxCharges = 3;
     [SerializeField] private float cooldownPerCharge = 60f;
 
@@ -18,6 +19,8 @@ public class BombThrower : MonoBehaviour
     private int currentCharges;
     private float cooldownTimer;
     private Coroutine cooldownLogger;
+    private bool isThrowing = false;
+    private Vector3 spawnReference;
 
     private void Awake()
     {
@@ -25,9 +28,11 @@ public class BombThrower : MonoBehaviour
 
         if (spawnPoint == null)
         {
-            GameObject spawn = new GameObject("BombSpawnPoint");
-            spawn.transform.SetParent(transform);
-            spawnPoint = spawn.transform;
+            Debug.LogError("spawnPoint is not assigned.");
+        }
+        else
+        {
+            spawnReference = spawnPoint.localPosition;
         }
     }
 
@@ -77,13 +82,30 @@ public class BombThrower : MonoBehaviour
 
         Vector3 facing = lastDirection != Vector3.zero ? lastDirection : Vector3.right;// Si no hay dirección, apunta hacia la derecha
 
-        spawnPoint.position = transform.position + facing * spawnOffset;
-        spawnPoint.rotation = Quaternion.LookRotation(facing);
+        spawnPoint.localPosition = spawnReference + facing * spawnOffset;
+        spawnPoint.localRotation = Quaternion.LookRotation(facing);
 
         GameObject bomb = Instantiate(bombPrefab, spawnPoint.position, spawnPoint.rotation);
         Rigidbody rb = bomb.GetComponent<Rigidbody>();
         if (rb != null)
             rb.linearVelocity = CalculateLaunchVelocity();
+
+        animator.SetTrigger("Throw");
+        OnThrowAnimation();
+    }
+
+
+    private void OnThrowAnimation()
+    {
+        if (isThrowing)
+            return;
+        isThrowing = true;
+
+    }
+
+    public void FinishThrowAnimation()
+    {
+        isThrowing = false;
     }
 
     private IEnumerator LogCooldown()
