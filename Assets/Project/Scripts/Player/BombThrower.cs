@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
+[RequireComponent(typeof(PlayerMovement))]
 public class BombThrower : MonoBehaviour
 {
     [SerializeField] private GameObject bombPrefab;
@@ -21,6 +22,7 @@ public class BombThrower : MonoBehaviour
     private Coroutine cooldownLogger;
     private bool isThrowing = false;
     private Vector3 spawnReference;
+    private PlayerMovement playerMovement;
 
     private void Awake()
     {
@@ -34,6 +36,13 @@ public class BombThrower : MonoBehaviour
         {
             spawnReference = spawnPoint.localPosition;
         }
+
+        playerMovement = GetComponent<PlayerMovement>();
+    }
+
+    public void RestoreCharges(int amount)
+    {
+        currentCharges = Mathf.Min(currentCharges + amount, maxCharges);
     }
 
     private void OnEnable()
@@ -42,12 +51,6 @@ public class BombThrower : MonoBehaviour
         cooldownTimer = 0f;
         inputActions.Player.Move.Enable();
         inputActions.Player.Attack.Enable();
-    }
-
-    private void OnDisable()
-    {
-        inputActions.Player.Move.Disable();
-        inputActions.Player.Attack.Disable();
     }
 
     private void Update()
@@ -62,49 +65,62 @@ public class BombThrower : MonoBehaviour
             lastDirection = inputDirection.normalized;
 
         if (inputActions.Player.Attack.WasPressedThisFrame())
-            ThrowBomb();
+            StartThrow();
     }
 
-    public void RestoreCharges(int amount)
+    private void StartThrow()
     {
-        currentCharges = Mathf.Min(currentCharges + amount, maxCharges);
-    }
-
-    private void ThrowBomb()
-    {
-        if (bombPrefab == null || currentCharges <= 0 || cooldownTimer > 0f)
+        if (currentCharges <= 0 || cooldownTimer > 0f)
             return;
 
         currentCharges--;
         cooldownTimer = cooldownPerCharge;
-
+        OnThrowAnimation();
         cooldownLogger ??= StartCoroutine(LogCooldown());
+    }
 
-        Vector3 facing = lastDirection != Vector3.zero ? lastDirection : Vector3.right;// Si no hay dirección, apunta hacia la derecha
+    /// <summary>
+    /// Lanza la bomba en la dirección del último movimiento. Se activa desde la animación de lanzamiento como un evento.
+    /// </summary>
+    private void DropBomb()
+    {
+        Vector3 facing = lastDirection != Vector3.zero ? lastDirection : Vector3.forward * -1f;// Si no hay dirección, apunta hacia adelante
 
-        spawnPoint.localPosition = spawnReference + facing * spawnOffset;
+        switch (facing.z)
+        {
+            case 0:
+                spawnPoint.localPosition = spawnReference + facing * spawnOffset;
+                break;
+            case > 0:
+                spawnPoint.localPosition = spawnReference + new Vector3(0.15f, 0f, 0f);
+                break;
+            case < 0:
+                spawnPoint.localPosition = spawnReference + new Vector3(-0.15f, 0f, 0f);
+                break;
+        }
         spawnPoint.localRotation = Quaternion.LookRotation(facing);
 
         GameObject bomb = Instantiate(bombPrefab, spawnPoint.position, spawnPoint.rotation);
         Rigidbody rb = bomb.GetComponent<Rigidbody>();
         if (rb != null)
             rb.linearVelocity = CalculateLaunchVelocity();
-
-        animator.SetTrigger("Throw");
-        OnThrowAnimation();
     }
-
 
     private void OnThrowAnimation()
     {
         if (isThrowing)
             return;
         isThrowing = true;
-
+        animator.SetTrigger("Throw");
+        playerMovement.IsMoving = false;
     }
 
-    public void FinishThrowAnimation()
+    /// <summary>
+    /// Permite al jugador moverse nuevamente después de lanzar la bomba. Se activa desde la animación de lanzamiento como un evento.
+    /// </summary>
+    private void FinishThrow()
     {
+        playerMovement.IsMoving = true;
         isThrowing = false;
     }
 
@@ -113,7 +129,7 @@ public class BombThrower : MonoBehaviour
         while (cooldownTimer > 0f)
         {
             Debug.Log($"Cooldown: {cooldownTimer:F1}s");
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(1.6f);
         }
 
         cooldownLogger = null;
@@ -135,5 +151,11 @@ public class BombThrower : MonoBehaviour
         horizontalDir.Normalize();
 
         return horizontalDir * (Mathf.Cos(angleRad) * speed) + Vector3.up * Mathf.Sin(angleRad) * speed; //tiro parabolico en el eje horizontal y en el eje vertical en la dirección indicada por spawnPoint
+    }
+
+    private void OnDisable()
+    {
+        inputActions.Player.Move.Disable();
+        inputActions.Player.Attack.Disable();
     }
 }
