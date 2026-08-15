@@ -11,6 +11,8 @@ public class PlayerMovement : MonoBehaviour
     private int currentDirection = 0; // 0=Down 1=Side 2=Forward
     private bool isMoving = true;
 
+    public bool IsMoving { set { isMoving = value; } }
+
     private void Awake()
     {
         inputActions ??= new InputSystem();
