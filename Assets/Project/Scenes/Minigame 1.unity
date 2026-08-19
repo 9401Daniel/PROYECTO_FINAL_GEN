@@ -284,14 +284,14 @@ RectTransform:
   m_GameObject: {fileID: 163910971}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.38005772, y: 0.38005772, z: 0.38005772}
+  m_LocalScale: {x: 0.29608017, y: 0.29608017, z: 0.29608017}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1887040665}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 524, y: 32}
+  m_AnchoredPosition: {x: 485.54, y: 25.095}
   m_SizeDelta: {x: 749, y: 505}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &163910973
@@ -377,14 +377,14 @@ RectTransform:
   m_GameObject: {fileID: 219643702}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.38005772, y: 0.38005772, z: 0.38005772}
+  m_LocalScale: {x: 0.29608017, y: 0.29608017, z: 0.29608017}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1887040665}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 522, y: -220}
+  m_AnchoredPosition: {x: 483.98, y: -171.22}
   m_SizeDelta: {x: 608, y: 724}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &219643704
@@ -492,7 +492,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Minigame.PuzzleSlot
   pieceId: 02
-  tolerance: 0
+  tolerance: 10
   onPiecePlaced:
     m_PersistentCalls:
       m_Calls: []
@@ -581,7 +581,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
@@ -599,6 +599,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1742481310}
+  - {fileID: 1582486992}
   - {fileID: 577487756}
   - {fileID: 1538124764}
   m_Father: {fileID: 0}
@@ -658,7 +659,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Minigame.PuzzleSlot
   pieceId: 03
-  tolerance: 0
+  tolerance: 10
   onPiecePlaced:
     m_PersistentCalls:
       m_Calls: []
@@ -682,7 +683,7 @@ GameObject:
   - component: {fileID: 577487758}
   - component: {fileID: 577487757}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: Puzzle Zone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -900,14 +901,14 @@ RectTransform:
   m_GameObject: {fileID: 946501274}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.38005772, y: 0.38005772, z: 0.38005772}
+  m_LocalScale: {x: 0.29608017, y: 0.29608017, z: 0.29608017}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1887040665}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 458, y: 231}
+  m_AnchoredPosition: {x: 434.12, y: 180.12}
   m_SizeDelta: {x: 782, y: 637}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &946501276
@@ -993,14 +994,14 @@ RectTransform:
   m_GameObject: {fileID: 1245703927}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.38005772, y: 0.38005772, z: 0.38005772}
+  m_LocalScale: {x: 0.29608017, y: 0.29608017, z: 0.29608017}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1887040665}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 214, y: 225}
+  m_AnchoredPosition: {x: 244.04, y: 175.45}
   m_SizeDelta: {x: 676, y: 710}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1245703929
@@ -1086,14 +1087,14 @@ RectTransform:
   m_GameObject: {fileID: 1251339469}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.38005772, y: 0.38005772, z: 0.38005772}
+  m_LocalScale: {x: 0.29608017, y: 0.29608017, z: 0.29608017}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1887040665}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 210, y: 22}
+  m_AnchoredPosition: {x: 240.92, y: 17.305}
   m_SizeDelta: {x: 811, y: 441}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1251339471
@@ -1280,7 +1281,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Minigame.PuzzleSlot
   pieceId: 05
-  tolerance: 0
+  tolerance: 10
   onPiecePlaced:
     m_PersistentCalls:
       m_Calls: []
@@ -1384,7 +1385,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Minigame.PuzzleSlot
   pieceId: 07
-  tolerance: 0
+  tolerance: 10
   onPiecePlaced:
     m_PersistentCalls:
       m_Calls: []
@@ -1452,7 +1453,19 @@ MonoBehaviour:
       m_Calls: []
   onProgressChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1582486995}
+        m_TargetAssemblyTypeName: UICounter, Assembly-CSharp
+        m_MethodName: UpdateRollbackCount
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1568410236
 GameObject:
   m_ObjectHideFlags: 0
@@ -1481,14 +1494,14 @@ RectTransform:
   m_GameObject: {fileID: 1568410236}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.38005772, y: 0.38005772, z: 0.38005772}
+  m_LocalScale: {x: 0.29608017, y: 0.29608017, z: 0.29608017}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1887040665}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 292, y: -191}
+  m_AnchoredPosition: {x: 304.8, y: -148.63}
   m_SizeDelta: {x: 606, y: 881}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1568410238
@@ -1546,6 +1559,158 @@ MonoBehaviour:
   snapDistance: 40
   returnSpeed: 1200
   bringToFront: 1
+--- !u!1 &1582486991
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1582486992}
+  - component: {fileID: 1582486994}
+  - component: {fileID: 1582486993}
+  - component: {fileID: 1582486995}
+  m_Layer: 5
+  m_Name: Remaining Parts Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1582486992
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1582486991}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 280874814}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -242.242, y: 276.38}
+  m_SizeDelta: {x: 593.515, y: 75.237}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1582486993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1582486991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: 'Remaining parts: 7'
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: ffd990ad8e3e42d4bb3fa6bf427280de, type: 2}
+  m_sharedMaterial: {fileID: -2738584433077570632, guid: ffd990ad8e3e42d4bb3fa6bf427280de, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 36
+  m_fontSizeBase: 36
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_characterHorizontalScale: 1
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_TextWrappingMode: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 0
+  m_ActiveFontFeatures: 6e72656b
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_EmojiFallbackSupport: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &1582486994
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1582486991}
+  m_CullTransparentMesh: 1
+--- !u!114 &1582486995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1582486991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d0d4c44dbf1f2e4dac88e016b3c03fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  initialCount: 7
+  countText: Remaining parts
 --- !u!1 &1742481309
 GameObject:
   m_ObjectHideFlags: 0
@@ -1558,7 +1723,7 @@ GameObject:
   - component: {fileID: 1742481312}
   - component: {fileID: 1742481311}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1671,7 +1836,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Minigame.PuzzleSlot
   pieceId: 04
-  tolerance: 0
+  tolerance: 10
   onPiecePlaced:
     m_PersistentCalls:
       m_Calls: []
@@ -1733,7 +1898,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Minigame.PuzzleSlot
   pieceId: 06
-  tolerance: 0
+  tolerance: 10
   onPiecePlaced:
     m_PersistentCalls:
       m_Calls: []
@@ -1837,7 +2002,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Minigame.PuzzleSlot
   pieceId: 01
-  tolerance: 0
+  tolerance: 10
   onPiecePlaced:
     m_PersistentCalls:
       m_Calls: []
@@ -1877,14 +2042,14 @@ RectTransform:
   m_GameObject: {fileID: 2020967196}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.38005772, y: 0.38005772, z: 0.38005772}
+  m_LocalScale: {x: 0.29608017, y: 0.29608017, z: 0.29608017}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1887040665}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 124, y: -203}
+  m_AnchoredPosition: {x: 173.92, y: -157.98}
   m_SizeDelta: {x: 476, y: 617}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2020967198

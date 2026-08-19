@@ -39,6 +39,8 @@ namespace Minigame
         private RectTransform rectTransform;
         private Canvas rootCanvas;
         private Vector2 startAnchoredPosition;
+        private Vector2 startSizeDelta;
+        private Vector3 startLocalScale;
         private Quaternion startRotation;
         private Vector2 dragOffset;
         private bool dragging;
@@ -51,6 +53,8 @@ namespace Minigame
         {
             rectTransform = GetComponent<RectTransform>();
             startAnchoredPosition = rectTransform.anchoredPosition;
+            startSizeDelta = rectTransform.sizeDelta;
+            startLocalScale = rectTransform.localScale;
             startRotation = rectTransform.rotation;
             rootCanvas = GetComponentInParent<Canvas>();
         }
@@ -127,8 +131,9 @@ namespace Minigame
             if (slotRect == null)
                 return false;
 
+            float allowedDistance = snapDistance + slot.SnapDistance;
             float distance = Vector2.Distance(rectTransform.anchoredPosition, slotRect.anchoredPosition);
-            return distance <= snapDistance;
+            return distance <= allowedDistance;
         }
 
         private void ReturnToStart()
@@ -147,6 +152,8 @@ namespace Minigame
             {
                 rectTransform.anchoredPosition = startAnchoredPosition;
                 rectTransform.rotation = startRotation;
+                rectTransform.sizeDelta = startSizeDelta;
+                rectTransform.localScale = startLocalScale;
             }
         }
 
@@ -163,7 +170,6 @@ namespace Minigame
                         return slot;
                 }
             }
-
             return null;
         }
 
@@ -172,6 +178,8 @@ namespace Minigame
             dragging = false;
             placed = false;
             rectTransform.anchoredPosition = startAnchoredPosition;
+            rectTransform.sizeDelta = startSizeDelta;
+            rectTransform.localScale = startLocalScale;
             rectTransform.rotation = startRotation;
         }
     }

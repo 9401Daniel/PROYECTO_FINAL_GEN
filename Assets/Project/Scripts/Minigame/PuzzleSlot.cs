@@ -42,10 +42,12 @@ namespace Minigame
             if (piece == null || piece.PieceId != pieceId || IsOccupied)
                 return;
 
-            // Snap the piece to the slot's exact position and rotation.
+            // Snap the piece to the slot's exact position, rotation and size.
             RectTransform pieceRect = piece.GetComponent<RectTransform>();
             pieceRect.anchoredPosition = rectTransform.anchoredPosition;
             pieceRect.rotation = rectTransform.rotation;
+            pieceRect.sizeDelta = rectTransform.sizeDelta;
+            pieceRect.localScale = rectTransform.localScale;
 
             PlacedPiece = piece;
             onPiecePlaced?.Invoke(piece);
