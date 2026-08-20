@@ -92,10 +92,10 @@ public class BombThrower : MonoBehaviour
                 spawnPoint.localPosition = spawnReference + facing * spawnOffset;
                 break;
             case > 0:
-                spawnPoint.localPosition = spawnReference + new Vector3(0.15f, 0f, 0f);
+                spawnPoint.localPosition = spawnReference + new Vector3(spawnOffset, 0f, spawnOffset);
                 break;
             case < 0:
-                spawnPoint.localPosition = spawnReference + new Vector3(-0.15f, 0f, 0f);
+                spawnPoint.localPosition = spawnReference + new Vector3(-spawnOffset, 0f, -spawnOffset);
                 break;
         }
         spawnPoint.localRotation = Quaternion.LookRotation(facing);

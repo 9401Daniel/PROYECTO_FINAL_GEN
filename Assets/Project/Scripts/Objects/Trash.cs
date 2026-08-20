@@ -1,11 +1,12 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Building : Interactable
+public class Trash : Interactable
 {
     protected override void Interact(InputAction.CallbackContext context)
     {
         HidePrompt();
-        print("Interact building.");
+        print("Interact Trash.");
+        active = false;
     }
 }

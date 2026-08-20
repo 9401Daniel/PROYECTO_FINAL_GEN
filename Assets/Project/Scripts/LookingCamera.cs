@@ -8,8 +8,12 @@ public class LookingCamera : MonoBehaviour
         if (gameObject.activeSelf)
         {
             mainCamera ??= Camera.main;
-            if (mainCamera != null)
-                transform.rotation = Quaternion.LookRotation(transform.position - mainCamera.transform.position);
         }
+    }
+
+    void Update()
+    {
+        if (mainCamera != null && gameObject.activeSelf)
+            transform.rotation = Quaternion.LookRotation(transform.position - mainCamera.transform.position);
     }
 }
