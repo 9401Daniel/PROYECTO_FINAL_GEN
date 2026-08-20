@@ -100,7 +100,7 @@ public class BombThrower : MonoBehaviour
         }
         spawnPoint.localRotation = Quaternion.LookRotation(facing);
 
-        GameObject bomb = Instantiate(bombPrefab, spawnPoint.position, spawnPoint.rotation);
+        GameObject bomb = Instantiate(bombPrefab, spawnPoint.position, Quaternion.identity);
         Rigidbody rb = bomb.GetComponent<Rigidbody>();
         if (rb != null)
             rb.linearVelocity = CalculateLaunchVelocity();

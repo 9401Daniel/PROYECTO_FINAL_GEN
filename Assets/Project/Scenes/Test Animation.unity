@@ -277,7 +277,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3d0ec6511e347f47bef630de39faeea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BombThrower
-  bombPrefab: {fileID: 3495809486270251802, guid: 53b158b3f1776c943befeaa077c14ded, type: 3}
+  bombPrefab: {fileID: 3495809486270251802, guid: d58b63d67390d1a438368a6528ef419a, type: 3}
   spawnPoint: {fileID: 1077710803}
   spawnOffset: 0.2
   throwDistance: 2
