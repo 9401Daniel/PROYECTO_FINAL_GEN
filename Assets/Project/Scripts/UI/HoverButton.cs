@@ -5,6 +5,16 @@ public class ButtonHoverEffect : MonoBehaviour, IPointerEnterHandler, IPointerEx
 {
     [SerializeField] private GameObject hoverRayon;
 
+    private void Awake()
+    {
+        hoverRayon.SetActive(false);
+    }
+
+    private void OnEnable()
+    {
+        hoverRayon.SetActive(false);
+    }
+
     public void OnPointerEnter(PointerEventData eventData)
     {
         hoverRayon.SetActive(true);
