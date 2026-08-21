@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2180793071748091869}
   - component: {fileID: 8951977091816241768}
+  - component: {fileID: 9210350069932858646}
   m_Layer: 3
   m_Name: Body Collider
   m_TagString: Player
@@ -53,6 +54,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.38612062, y: 1.6401968, z: 0.091618024}
   m_Center: {x: 0.0028414961, y: 0.06153961, z: 0}
+--- !u!114 &9210350069932858646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 589085957311206025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62968464b11a74148864e3595249b8a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerInteract
 --- !u!1 &4268314631755302091
 GameObject:
   m_ObjectHideFlags: 0
@@ -66,12 +79,11 @@ GameObject:
   - component: {fileID: 686207641030958856}
   - component: {fileID: 1107923568503050423}
   - component: {fileID: 3781511353601678930}
-  - component: {fileID: 9219552559739430037}
   - component: {fileID: 5180016292361740994}
   - component: {fileID: 6404381178071076518}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -205,23 +217,11 @@ MonoBehaviour:
   bombPrefab: {fileID: 3495809486270251802, guid: d58b63d67390d1a438368a6528ef419a, type: 3}
   spawnPoint: {fileID: 1545297664114500990}
   spawnOffset: 0.2
-  throwDistance: 2
+  throwDistance: 5
   launchAngle: 45
   animator: {fileID: 686207641030958856}
   maxCharges: 3
   cooldownPerCharge: 5
---- !u!114 &9219552559739430037
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4268314631755302091}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62968464b11a74148864e3595249b8a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerInteract
 --- !u!54 &5180016292361740994
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -270,7 +270,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1545297664114500990}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SpawnBomb
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
@@ -302,7 +302,7 @@ GameObject:
   m_Component:
   - component: {fileID: 765450882887933334}
   - component: {fileID: 3567395227317363229}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -1,3 +1,4 @@
+
 using UnityEngine;
 
 public class LookingCamera : MonoBehaviour
@@ -14,6 +15,14 @@ public class LookingCamera : MonoBehaviour
     void Update()
     {
         if (mainCamera != null && gameObject.activeSelf)
-            transform.rotation = Quaternion.LookRotation(transform.position - mainCamera.transform.position);
+        {
+            Vector3 dir = transform.position - mainCamera.transform.position;
+            if (gameObject.tag == "Enemy")
+            {
+                dir.y = 0f;
+            }
+            dir.x = 0f;
+            transform.rotation = Quaternion.LookRotation(dir);
+        }
     }
 }

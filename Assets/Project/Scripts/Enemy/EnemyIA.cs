@@ -9,7 +9,7 @@ public class EnemyAI : MonoBehaviour
     // Patrol: recorre waypoints en bucle
     // Chase: persigue al jugador porque lo tiene detectado
     // Search: perdió al jugador de vista, va al último punto donde lo vio y espera un rato antes de volver a patrullar
-    public enum State { Patrol, Chase, Search, Alert}
+    public enum State { Patrol, Chase, Search, Alert }
     public State currentState = State.Patrol; // Estado inicial del enemigo
 
     [Header("Patrulla")]
@@ -39,12 +39,12 @@ public class EnemyAI : MonoBehaviour
     private Vector3 noisePosition;       // Posición donde ocurrió el ruido
 
 
-   // ======================= AGREGADO: ANIMATOR =======================
+    // ======================= AGREGADO: ANIMATOR =======================
 
     [Header("Animación")]
     [SerializeField] private Animator anim;              // Animator del sprite (normalmente en un hijo "Visual")
-    [SerializeField] private Transform spriteTransform;   // Transform de ese mismo hijo, para poder flipearlo y evitar que rote
- 
+    [SerializeField] private SpriteRenderer spriteTransform;   // Transform de ese mismo hijo, para poder flipearlo y evitar que rote
+
     // Hasheamos los nombres de los parámetros una sola vez: es más rápido que pasar el string cada frame
     private static readonly int SpeedHash = Animator.StringToHash("Speed");
     private static readonly int MoveXHash = Animator.StringToHash("MoveX");
@@ -59,6 +59,7 @@ public class EnemyAI : MonoBehaviour
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        //agent.updateRotation = false;
         if (waypoints.Length > 0) GoToNextWaypoint(); // Arranca la ruta de patrulla si hay waypoints asignados
     }
 
@@ -182,7 +183,7 @@ public class EnemyAI : MonoBehaviour
         // Si estaba persiguiendo pero ya no se cumplen las condiciones de detección arriba, pasa a buscar
         if (currentState == State.Chase)
         {
-            currentState = State.Search;
+            currentState = State.Patrol;
         }
     }
 
@@ -195,7 +196,7 @@ public class EnemyAI : MonoBehaviour
     void UpdateAnimator()
     {
         if (anim == null) return; // por si todavía no conectaste el Animator, no rompe el resto del script
- 
+
         // agent.velocity es la velocidad REAL de movimiento (mundo), no depende de hacia dónde mira el objeto.
         // Dividir por agent.speed la normaliza entre 0 y 1, útil para el Blend Tree de Walk/Run.
         //float speedNormalized = agent.speed > 0.01f ? agent.velocity.magnitude / agent.speed : 0f;
@@ -209,29 +210,31 @@ public class EnemyAI : MonoBehaviour
             Vector3 dir = agent.velocity.normalized;
             anim.SetFloat(MoveXHash, Mathf.Abs(dir.x));
             anim.SetFloat(MoveZHash, dir.z);
- 
+
             // Flip horizontal: reusamos el mismo clip "Side" para izquierda y derecha
-            if (spriteTransform != null && Mathf.Abs(dir.x) > 0.15f)
+            if (dir.x > 0)
             {
-                Vector3 scale = spriteTransform.localScale;
-                scale.x = Mathf.Sign(dir.x) * Mathf.Abs(scale.x);
-                spriteTransform.localScale = scale;
+                spriteTransform.flipX = false;
+            }
+            else
+            {
+                spriteTransform.flipX = true;
             }
         }
- 
+
         // La pose "Alert" solo se muestra cuando YA llegó al punto del ruido y está girando en el lugar,
         // no mientras todavía está caminando hacia allá (eso se ve como Walk normal).
         anim.SetBool(IsAlertHash, currentState == State.Alert && agent.isStopped);
- 
+
         // Evita que el sprite rote en 3D junto con el EnemyRoot (que sí necesita rotar para el cono de visión).
         // Si tu Visual ya está desacoplado de otra forma, podés borrar esta línea.
-        if (spriteTransform != null && spriteTransform != transform)
+        /*if (spriteTransform != null && spriteTransform != transform)
         {
             spriteTransform.rotation = Quaternion.identity;
-        }
+        }*/
     }
     // ====================================================================
- 
+
 
     // Dibuja el radio y el cono de visión en la vista de Scene, solo quando el objeto está seleccionado
     void OnDrawGizmosSelected()
