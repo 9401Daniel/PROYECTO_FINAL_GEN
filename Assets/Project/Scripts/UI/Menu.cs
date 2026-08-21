@@ -36,6 +36,7 @@ public class Menu : MonoBehaviour
 
         // Estado inicial
         ShowMainMenu();
+        StartCoroutine(Fade.Instance.FadeIn());
     }
 
     private void StartGame()

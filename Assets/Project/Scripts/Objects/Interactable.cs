@@ -31,15 +31,20 @@ public abstract class Interactable : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (playerInRange == null || !active)
+        if (playerInRange == null)
             return;
         PlayerInteract player = other.GetComponent<PlayerInteract>();
         if (player != null && player == playerInRange)
         {
-            HidePrompt();
-            player.UnsubscribeFromInteract(Interact);
-            playerInRange = null;
+            FinishInteraction();
         }
+    }
+
+    protected void FinishInteraction()
+    {
+        HidePrompt();
+        playerInRange.UnsubscribeFromInteract(Interact);
+        playerInRange = null;
     }
 
     protected virtual void Interact(InputAction.CallbackContext context)

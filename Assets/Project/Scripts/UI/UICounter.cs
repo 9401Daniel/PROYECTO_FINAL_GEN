@@ -1,11 +1,14 @@
 using UnityEngine;
 using TMPro;
+using System;
 
 public class UICounter : MonoBehaviour
 {
     [SerializeField] private int initialCount;
     [SerializeField] private string countText;
     private TextMeshProUGUI textMeshPro;
+    public bool GameCompleted => initialCount == 0;
+    public event Action OnCountChanged;
 
     private void Awake()
     {
@@ -17,11 +20,6 @@ public class UICounter : MonoBehaviour
     {
         initialCount--;
         textMeshPro.text = countText + ": " + initialCount;
-    }
-
-    public void UpdateForwardCount()
-    {
-        initialCount++;
-        textMeshPro.text = countText + ": " + initialCount;
+        OnCountChanged?.Invoke();
     }
 }

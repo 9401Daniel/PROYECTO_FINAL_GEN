@@ -17,6 +17,7 @@ public class BombThrower : MonoBehaviour
 
     private InputSystem inputActions;
     private Vector3 lastDirection;
+    private Vector3 facing;
     private int currentCharges;
     private float cooldownTimer;
     private Coroutine cooldownLogger;
@@ -75,6 +76,7 @@ public class BombThrower : MonoBehaviour
 
         currentCharges--;
         cooldownTimer = cooldownPerCharge;
+        facing = lastDirection != Vector3.zero ? lastDirection : Vector3.forward * -1f;// Si no hay dirección, apunta hacia adelante
         OnThrowAnimation();
         cooldownLogger ??= StartCoroutine(LogCooldown());
     }
@@ -84,8 +86,6 @@ public class BombThrower : MonoBehaviour
     /// </summary>
     private void DropBomb()
     {
-        Vector3 facing = lastDirection != Vector3.zero ? lastDirection : Vector3.forward * -1f;// Si no hay dirección, apunta hacia adelante
-
         switch (facing.z)
         {
             case 0:
