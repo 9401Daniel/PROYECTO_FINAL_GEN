@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -35,16 +36,21 @@ public class Menu : MonoBehaviour
 
         // Estado inicial
         ShowMainMenu();
+        StartCoroutine(Fade.Instance.FadeIn());
     }
 
     private void StartGame()
     {
         print("StartGame");
-
-        StartCoroutine(Fade.Instance.FadeOut());
-
         // Logica para obtener el ultimo nivel completado
-        // FlowManager.Instance.GoToScene("");
+        StartCoroutine(StartGameCoroutine());
+    }
+
+    private IEnumerator StartGameCoroutine()
+    {
+        StartCoroutine(Fade.Instance.FadeOut());
+        yield return new WaitForSeconds(1f);
+        FlowManager.Instance.GoToScene("Level 1");
     }
 
     private void HowToPlay()
