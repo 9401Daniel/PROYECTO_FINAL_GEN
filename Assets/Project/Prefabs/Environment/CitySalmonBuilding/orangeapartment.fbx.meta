@@ -1,34 +1,9 @@
 fileFormatVersion: 2
-guid: 5c95d1869d64e194dbc5695b3fc58986
+guid: 8cb365f6fbcc70c4a9cd9307447dedd4
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: brickwallbuilding.png
-    second: {fileID: 2100000, guid: 232c6acc0e5a30c4c96e879a66eac34e, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: doortexture.png
-    second: {fileID: 2100000, guid: 5513c763313d98d43ab912be44b7aa8a, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: garage door.png
-    second: {fileID: 2100000, guid: d052dd2eb50337c46a771d6bfbec126c, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: whiteconcrete.png
-    second: {fileID: 2100000, guid: 010c683db8e22b14e86061221e3019c3, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: window texture.png
-    second: {fileID: 2100000, guid: 799fef360e865b34abee688871e51d3d, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
