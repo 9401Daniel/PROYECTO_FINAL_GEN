@@ -9,18 +9,22 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector2 moveInput;
     private int currentDirection = 0; // 0=Down 1=Side 2=Forward
-    private bool isThrowing = false;
+    private bool isMoving = true;
+    private Rigidbody rb;
+
+    public bool IsMoving { set { isMoving = value; } }
 
     private void Awake()
     {
+        rb = GetComponent<Rigidbody>();
         inputActions ??= new InputSystem();
         if (animator == null)
         {
-            animator = GetComponent<Animator>();
+            Debug.LogError("Animator Component not found");
         }
         if (spriteRenderer == null)
         {
-            spriteRenderer = GetComponent<SpriteRenderer>();
+            Debug.LogError("SpriteRenderer Component not found");
         }
     }
 
@@ -28,50 +32,36 @@ public class PlayerMovement : MonoBehaviour
     {
         inputActions.Player.Move.Enable();
         inputActions.Player.Attack.Enable();
-
-        //inputActions.Player.Attack.performed += OnThrow;
     }
 
     private void OnDisable()
     {
         inputActions.Player.Move.Disable();
         inputActions.Player.Attack.Disable();
-
-        //inputActions.Player.Attack.performed -= OnThrow;
     }
 
     void Update()
     {
-        moveInput = inputActions.Player.Move.ReadValue<Vector2>();
-        //Lock Movement while throwing
-        if (isThrowing)
+        if (!isMoving)
         {
+            animator.SetInteger("MovementState", 0);
             moveInput = Vector2.zero;
             return;
         }
-        UpdateDirection();
-        UpdateAnimation();
+        moveInput = inputActions.Player.Move.ReadValue<Vector2>();
+    }
+
+    private void FixedUpdate()
+    {
         Move();
     }
-
-    /*
-    private void OnThrow(UnityEngine.InputSystem.InputAction.CallbackContext context)
+    private void Move()
     {
-        if (isThrowing)
-            return;
-        isThrowing = true;
-        animator.SetTrigger("Throw");
-    }
-
-    public void FinishThrow()
-    {
-        isThrowing = false;
-
-        moveInput = inputActions.Player.Move.ReadValue<Vector2>();
-
         UpdateDirection();
         UpdateAnimation();
-    } */
+        Vector3 direction = new Vector3(moveInput.x, 0f, moveInput.y).normalized;
+        rb.linearVelocity = direction * moveSpeed;
+    }
 
     private void UpdateDirection()
     {
@@ -115,11 +105,5 @@ public class PlayerMovement : MonoBehaviour
         {
             animator.SetInteger("MovementState", 0);
         }
-    }
-
-    private void Move()
-    {
-        Vector3 direction = new Vector3(moveInput.x, 0f, moveInput.y).normalized;
-        transform.position += direction * (moveSpeed * Time.deltaTime);
     }
 }

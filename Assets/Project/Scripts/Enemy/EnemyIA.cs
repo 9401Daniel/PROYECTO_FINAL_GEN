@@ -9,7 +9,7 @@ public class EnemyAI : MonoBehaviour
     // Patrol: recorre waypoints en bucle
     // Chase: persigue al jugador porque lo tiene detectado
     // Search: perdió al jugador de vista, va al último punto donde lo vio y espera un rato antes de volver a patrullar
-    public enum State { Patrol, Chase, Search }
+    public enum State { Patrol, Chase, Search, Alert, MovingToNoise }
     public State currentState = State.Patrol; // Estado inicial del enemigo
 
     [Header("Patrulla")]
@@ -32,12 +32,35 @@ public class EnemyAI : MonoBehaviour
     private float searchTimer;           // Cuenta regresiva activa mientras está en estado Search
     private Vector3 lastKnownPosition;   // Última posición registrada del jugador antes de perderlo
 
+    [Header("Alerta (bombas de ruido)")]
+    public float alertTime = 1.5f;       // Tiempo que se queda quieto haciendo la animación de alerta antes de correr
+    public float lookAroundSpeed = 60f;  // Velocidad de giro (grados/seg) mientras mira de lado a lado en Search
+    private float alertTimer;            // Cuenta regresiva activa mientras está en estado Alert
+    private Vector3 noisePosition;       // Posición donde ocurrió el ruido
+
+    // ======================= AGREGADO: ANIMATOR =======================
+
+    [Header("Animación")]
+    [SerializeField] private Animator anim;              // Animator del sprite (normalmente en un hijo "Visual")
+    [SerializeField] private SpriteRenderer spriteRendered;   // Transform de ese mismo hijo, para poder flipearlo y evitar que rote
+
+    // Hasheamos los nombres de los parámetros una sola vez: es más rápido que pasar el string cada frame
+    private static readonly int SpeedHash = Animator.StringToHash("Speed");
+    private static readonly int MoveXHash = Animator.StringToHash("MoveX");
+    private static readonly int MoveZHash = Animator.StringToHash("MoveZ");
+    private static readonly int AlertTriggerHash = Animator.StringToHash("AlertTrigger");
+
+    // ====================================================================
+
+
     private NavMeshAgent agent; // Referencia al componente que maneja el pathfinding y el movimiento
 
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        //agent.updateRotation = false;
         if (waypoints.Length > 0) GoToNextWaypoint(); // Arranca la ruta de patrulla si hay waypoints asignados
+
     }
 
     void Update()
@@ -47,17 +70,21 @@ public class EnemyAI : MonoBehaviour
         {
             case State.Patrol: Patrol(); break;
             case State.Chase: Chase(); break;
-            case State.Search: Search(); break;
+            //case State.Search: Search(); break;
+            case State.Alert: Alert(); break;
+            case State.MovingToNoise: MovingToNoise(); break;
         }
 
         // La detección se evalúa en todo momento, sin importar el estado,
         // porque es lo que decide si hay que cambiar de estado
         CheckFieldOfView();
+        UpdateAnimator();
     }
 
     void Patrol()
     {
         if (waypoints.Length == 0) return; // Sin waypoints no hay ruta que seguir
+        agent.isStopped = false;
         agent.speed = patrolSpeed;
 
         // Si el agente ya no tiene camino pendiente y está cerca del destino, pasa al siguiente waypoint
@@ -79,19 +106,66 @@ public class EnemyAI : MonoBehaviour
         agent.SetDestination(player.position); // Actualiza el destino cada frame para seguir al jugador en tiempo real
     }
 
-    void Search()
+    /*void Search()
     {
-        agent.speed = patrolSpeed;
-        agent.SetDestination(lastKnownPosition); // Va al último lugar donde vio al jugador
-        searchTimer -= Time.deltaTime; // Descuenta el tiempo de búsqueda
-
-        // Cuando llega al punto de búsqueda y el tiempo se agotó, vuelve a patrullar
-        if (!agent.pathPending && agent.remainingDistance < 0.5f && searchTimer <= 0f)
+        // Quieto en el punto del ruido, mirando de lado a lado.
+        agent.isStopped = true;
+        // Llegó al punto del ruido: pasa a buscar (mirar de lado a lado).
+        anim.SetFloat(MoveXHash, 0f);
+        anim.SetFloat(MoveZHash, 0f);
+        searchTimer -= Time.deltaTime;
+        if (searchTimer <= 0f)
         {
+            agent.isStopped = false;
             currentState = State.Patrol;
             if (waypoints.Length > 0) GoToNextWaypoint();
         }
+        }*/
+
+
+    // Estado mientras el enemigo espera quieto haciendo la animación de alerta.
+    // No se mueve todavía: solo reacciona al ruido quedándose un momento.
+    void Alert()
+    {
+        agent.isStopped = true;
+
+        alertTimer -= Time.deltaTime;
+        if (alertTimer <= 0f)
+        {
+            agent.isStopped = false;
+            currentState = State.MovingToNoise;
+            agent.SetDestination(noisePosition); // Ya salió la animación de alerta: ahora corre hacia el ruido
+        }
     }
+
+    // Corre (chaseSpeed) hacia el punto del ruido hasta llegar.
+    void MovingToNoise()
+    {
+        agent.speed = chaseSpeed;
+
+        if (!agent.pathPending && agent.remainingDistance < 0.01f)
+        {
+            currentState = State.Patrol;
+            searchTimer = searchTime;
+        }
+    }
+
+    // Llamado desde afuera (por ejemplo, desde el script de la bomba de ruido) cuando el enemigo
+    // está dentro del radio de alcance del sonido
+    public void HearNoise(Vector3 position)
+    {
+        // Si ya está persiguiendo al jugador, el ruido no lo distrae de la persecución
+        if (currentState == State.Chase) return;
+
+        noisePosition = position;
+        currentState = State.Alert;
+        alertTimer = alertTime;
+        agent.isStopped = true;           // Se queda quieto mientras hace la animación de alerta
+
+        if (anim != null)
+            anim.SetTrigger(AlertTriggerHash); // Dispara la animación de alerta
+    }
+
 
     void CheckFieldOfView()
     {
@@ -121,9 +195,48 @@ public class EnemyAI : MonoBehaviour
         // Si estaba persiguiendo pero ya no se cumplen las condiciones de detección arriba, pasa a buscar
         if (currentState == State.Chase)
         {
-            currentState = State.Search;
+            currentState = State.Patrol;
         }
     }
+
+
+
+    // ======================= AGREGADO: ANIMATOR =======================
+    // Traduce lo que está pasando en la máquina de estados a parámetros que el
+    // Animator Controller entiende. Esta función NO decide qué animación se ve,
+    // solo pasa datos — la decisión final la toma el grafo del Animator.
+    void UpdateAnimator()
+    {
+        if (anim == null) return; // por si todavía no conectaste el Animator, no rompe el resto del script
+
+        // agent.velocity es la velocidad REAL de movimiento (mundo), no depende de hacia dónde mira el objeto.
+        // Dividir por agent.speed la normaliza entre 0 y 1, útil para el Blend Tree de Walk/Run.
+        //float speedNormalized = agent.speed > 0.01f ? agent.velocity.magnitude / agent.speed : 0f;
+        //anim.SetFloat(SpeedHash, speedNormalized);
+        float currentSpeed = agent.velocity.magnitude;
+        anim.SetFloat(SpeedHash, currentSpeed);
+        // Solo actualizamos la dirección si realmente se está moviendo, para que no "tiemble"
+        // el Blend Tree cuando el enemigo está parado (ej. en Alert ya detenido).
+        if (agent.velocity.sqrMagnitude > 0.01f)
+        {
+            Vector3 dir = agent.velocity.normalized;
+            anim.SetFloat(MoveXHash, Mathf.Abs(dir.x));
+            anim.SetFloat(MoveZHash, dir.z);
+
+            // Flip horizontal: reusamos el mismo clip "Side" para izquierda y derecha
+            if (dir.x > 0)
+            {
+                spriteRendered.flipX = false;
+            }
+            else
+            {
+                spriteRendered.flipX = true;
+            }
+        }
+
+    }
+    // ====================================================================
+
 
     // Dibuja el radio y el cono de visión en la vista de Scene, solo quando el objeto está seleccionado
     void OnDrawGizmosSelected()
