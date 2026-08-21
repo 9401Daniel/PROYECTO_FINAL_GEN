@@ -10,11 +10,13 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 moveInput;
     private int currentDirection = 0; // 0=Down 1=Side 2=Forward
     private bool isMoving = true;
+    private Rigidbody rb;
 
     public bool IsMoving { set { isMoving = value; } }
 
     private void Awake()
     {
+        rb = GetComponent<Rigidbody>();
         inputActions ??= new InputSystem();
         if (animator == null)
         {
@@ -47,6 +49,10 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
         moveInput = inputActions.Player.Move.ReadValue<Vector2>();
+    }
+
+    private void FixedUpdate()
+    {
         Move();
     }
     private void Move()
@@ -54,7 +60,7 @@ public class PlayerMovement : MonoBehaviour
         UpdateDirection();
         UpdateAnimation();
         Vector3 direction = new Vector3(moveInput.x, 0f, moveInput.y).normalized;
-        transform.position += direction * (moveSpeed * Time.deltaTime);
+        rb.linearVelocity = direction * moveSpeed;
     }
 
     private void UpdateDirection()
