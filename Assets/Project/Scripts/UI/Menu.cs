@@ -41,9 +41,6 @@ public class Menu : MonoBehaviour
     private void StartGame()
     {
         print("StartGame");
-
-
-
         // Logica para obtener el ultimo nivel completado
         StartCoroutine(StartGameCoroutine());
     }
@@ -51,7 +48,7 @@ public class Menu : MonoBehaviour
     private IEnumerator StartGameCoroutine()
     {
         StartCoroutine(Fade.Instance.FadeOut());
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
         FlowManager.Instance.GoToScene("Level 1");
     }
 

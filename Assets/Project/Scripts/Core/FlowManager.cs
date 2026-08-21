@@ -21,7 +21,6 @@ public class FlowManager : MonoBehaviour
 
     public void GoToScene(string sceneName)
     {
-        StartCoroutine(Fade.Instance.FadeOut());
         if (_scenesWithLoading.Contains(sceneName))
         {
             targetScene = sceneName;
