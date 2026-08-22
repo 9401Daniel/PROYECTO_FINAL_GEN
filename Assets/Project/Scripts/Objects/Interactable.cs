@@ -4,7 +4,6 @@ using UnityEngine.InputSystem;
 public abstract class Interactable : MonoBehaviour
 {
     [SerializeField] private GameObject promptUI;
-
     private PlayerInteract playerInRange;
     protected bool active = true;
 
@@ -51,6 +50,11 @@ public abstract class Interactable : MonoBehaviour
     {
         HidePrompt();
         print("Interact base." + context);
+    }
+
+    public void ResetInteraction()
+    {
+        active = true;
     }
 
     protected void ShowPrompt()

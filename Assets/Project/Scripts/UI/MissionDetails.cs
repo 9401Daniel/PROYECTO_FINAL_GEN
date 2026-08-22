@@ -19,4 +19,11 @@ public class MissionDetails : MonoBehaviour
         OnMissionCountChanged?.Invoke();
     }
 
+    public void ResetCount()
+    {
+        initialCount = 0;
+        missionText.text = missionTextContent + ": " + initialCount + "/" + missionMaxCount;
+        OnMissionCountChanged?.Invoke();
+    }
+
 }
