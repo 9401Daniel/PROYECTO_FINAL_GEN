@@ -1,14 +1,9 @@
 fileFormatVersion: 2
-guid: be0a9f085c7f65045b25e4f4808b07f4
+guid: 64be4a105040a4942b94584619eff435
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: StreetTextureCity.png
-    second: {fileID: 2100000, guid: 8fddf1b0c92542943bdabe06706a413c, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: be0a9f085c7f65045b25e4f4808b07f4
+guid: cb6c760cda306114db83dda61215779b
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
@@ -7,8 +7,13 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: StreetTextureCity.png
-    second: {fileID: 2100000, guid: 8fddf1b0c92542943bdabe06706a413c, type: 2}
+      name: basketball net.png
+    second: {fileID: 2100000, guid: 954c96e6235c21248bd9c2f463056670, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: fishnetpixelated.png
+    second: {fileID: 2100000, guid: 29fca3177ef889d468203a5da75eb2a3, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
