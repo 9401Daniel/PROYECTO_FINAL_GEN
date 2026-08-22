@@ -97,5 +97,6 @@ public class PlayerStats : MonoBehaviour
 
         SetMoving(true);
         isBeingCaught = false;
+        print("Player has been caught. Remaining attempts: " + currentAttempts);
     }
 }

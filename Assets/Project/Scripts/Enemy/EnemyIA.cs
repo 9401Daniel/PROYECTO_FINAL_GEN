@@ -24,8 +24,6 @@ public class EnemyAI : MonoBehaviour
 
     [Header("Búsqueda (cuando lo pierde de vista)")]
     public float searchTime = 3f;
-    private float searchTimer;
-    private Vector3 lastKnownPosition;
 
     [Header("Alerta (bombas de ruido)")]
     public float alertTime = 1.5f;
@@ -50,41 +48,6 @@ public class EnemyAI : MonoBehaviour
     private bool catchTriggered;
     private float catchTimer;
     private NavMeshAgent agent;
-
-    // Reinicia por completo el estado del enemigo para poder reutilizarlo
-    // (por ejemplo, al reiniciar el nivel o respawnear a los enemigos).
-    // Vuelve al estado de patrulla, limpia alerta/búsqueda/captura y
-    // reactiva el NavMeshAgent.
-    public void ResetEnemy()
-    {
-        // Vuelve al estado inicial de patrulla
-        currentState = State.Patrol;
-
-        // Limpia búsqueda y alerta
-        searchTimer = 0f;
-        alertTimer = 0f;
-        noisePosition = Vector3.zero;
-
-        // Limpia captura
-        capturedStats = null;
-        catchTriggered = false;
-        catchTimer = 0f;
-
-        // Reinicia el índice de waypoints para empezar de nuevo la ruta
-        currentWaypointIndex = 0;
-
-        // Reactiva el NavMeshAgent y limpia cualquier ruta pendiente
-        if (agent != null)
-        {
-            agent.isStopped = false;
-            agent.ResetPath();
-            agent.velocity = Vector3.zero;
-        }
-
-        // Lo envía de nuevo al primer waypoint para retomar la patrulla
-        if (waypoints.Length > 0 && agent != null)
-            agent.SetDestination(waypoints[0].position);
-    }
 
     void Start()
     {
@@ -157,7 +120,6 @@ public class EnemyAI : MonoBehaviour
         if (!agent.pathPending && agent.remainingDistance < 0.01f)
         {
             currentState = State.Patrol;
-            searchTimer = searchTime;
         }
     }
 
@@ -177,6 +139,39 @@ public class EnemyAI : MonoBehaviour
             anim.SetTrigger(AlertTriggerHash);
     }
 
+    public void ResetEnemy()
+    {
+        // Vuelve al estado inicial de patrulla
+        currentState = State.Patrol;
+
+        // Limpia búsqueda y alerta
+        alertTimer = 0f;
+        noisePosition = Vector3.zero;
+
+        // Limpia captura
+        capturedStats = null;
+        catchTriggered = false;
+        catchTimer = 0f;
+
+        // Reinicia el índice de waypoints para empezar de nuevo la ruta
+        currentWaypointIndex = 0;
+
+        // Reactiva el NavMeshAgent y limpia cualquier ruta pendiente
+        if (agent != null)
+        {
+            agent.isStopped = false;
+            agent.ResetPath();
+            agent.velocity = Vector3.zero;
+        }
+
+        // Teletransporta al enemigo al primer waypoint y lo envía a patrullar
+        if (waypoints.Length > 0)
+        {
+            transform.position = waypoints[0].position; // Mueve el físico al primer waypoint
+            if (agent != null)
+                agent.Warp(waypoints[0].position); // Sincroniza el NavMeshAgent con la nueva posición
+        }
+    }
 
     void CheckFieldOfView()
     {
@@ -198,10 +193,7 @@ public class EnemyAI : MonoBehaviour
 
             if (!blocked)
             {
-                // Detección confirmada: el enemigo realmente ve al jugador
-                lastKnownPosition = player.position; // Guarda la posición por si luego se pierde el contacto visual
                 currentState = State.Chase;
-                searchTimer = searchTime; // Reinicia el contador de búsqueda para cuando lo pierda de vista
                 return;
             }
         }
@@ -231,7 +223,6 @@ public class EnemyAI : MonoBehaviour
                 spriteRendered.flipX = true;
             }
         }
-
     }
 
     // Dibuja el radio y el cono de visión en la vista de Scene, solo quando el objeto está seleccionado
@@ -270,7 +261,8 @@ public class EnemyAI : MonoBehaviour
 
         anim.SetTrigger(CatchPlayerHash);
 
-        // Tras el tiempo de captura, vuelve a patrullar.
+        // Tras el tiempo de captura, se reinicia por completo al enemigo
+        // (lo teletransporta al primer waypoint y limpia la alerta/búsqueda/captura).
         if (catchTimer > 0f)
         {
             catchTimer -= Time.deltaTime;
@@ -278,10 +270,7 @@ public class EnemyAI : MonoBehaviour
         else
         {
             catchTimer = catchDuration;
-            currentState = State.Patrol;
-            capturedStats = null;
-            catchTriggered = false;
-            if (waypoints.Length > 0) GoToNextWaypoint();
+            ResetEnemy();
         }
     }
 
