@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEngine.SceneManagement;
+
 /// <summary>
 /// Punto de entrada único para reproducir diálogos en el juego.
 /// Persiste entre escenas (Singleton + DontDestroyOnLoad). Cada escena
@@ -13,7 +14,9 @@ public class DialogueManager : MonoBehaviour
 {
     public static DialogueManager Instance { get; private set; }
 
-    [SerializeField] private PlayerMovement playerMovement;
+    private PlayerMovement playerMovement;
+    private BombThrower bombThrower;
+    private PlayerUI playerUI;
 
     [Serializable]
     public class SceneDialogueEntry
@@ -30,7 +33,6 @@ public class DialogueManager : MonoBehaviour
     private Dialogue activeDialogue;
 
     [SerializeField] private GameObject dialoguePanel;
-
     public event Action OnDialogueManagerEnded;
 
     private void Awake()
@@ -54,6 +56,8 @@ public class DialogueManager : MonoBehaviour
         string sceneName = SceneManager.GetActiveScene().name;
         SceneDialogueEntry entry = sceneDialogues.Find(e => e.sceneName == sceneName);
         playerMovement = FindFirstObjectByType<PlayerMovement>();
+        bombThrower = FindFirstObjectByType<BombThrower>();
+        playerUI = FindFirstObjectByType<PlayerUI>();
 
         if (entry == null)
         {
@@ -82,6 +86,12 @@ public class DialogueManager : MonoBehaviour
         dialoguePanel.SetActive(true);
         activeDialogue = dialogue;
         activeDialogue.OnDialogueEnded += HandleDialogueEnded;
+        if (playerUI != null)
+            playerUI.SetActive(false);
+        if (playerMovement != null)
+            playerMovement.IsMoving = false;
+        if (bombThrower != null)
+            bombThrower.Active = false;
         activeDialogue.gameObject.SetActive(true);
         activeDialogue.StartDialogue();
     }
@@ -93,8 +103,12 @@ public class DialogueManager : MonoBehaviour
             return;
         activeDialogue.OnDialogueEnded -= HandleDialogueEnded;
         activeDialogue.gameObject.SetActive(false);
+        if (playerUI != null)
+            playerUI.SetActive(true);
         if (playerMovement != null)
             playerMovement.IsMoving = true;
+        if (bombThrower != null)
+            bombThrower.Active = true;
         activeDialogue = null;
     }
 

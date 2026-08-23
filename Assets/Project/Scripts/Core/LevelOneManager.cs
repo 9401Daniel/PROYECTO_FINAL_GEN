@@ -4,15 +4,12 @@ using UnityEngine;
 public class LevelOneManager : MonoBehaviour
 {
     [SerializeField] private MissionDetails missionDetails;
-    private PlayerMovement playerMovement;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         StartCoroutine(Fade.Instance.FadeIn());
         missionDetails.OnMissionCountChanged += ValidateMission;
         DialogueManager.Instance.ShowDialogue();
-        playerMovement = FindFirstObjectByType<PlayerMovement>();
-        playerMovement.IsMoving = false;
     }
 
     private void ValidateMission()

@@ -22,9 +22,6 @@ public class EnemyAI : MonoBehaviour
     public float chaseSpeed = 4f;
     public Transform player;
 
-    [Header("Búsqueda (cuando lo pierde de vista)")]
-    public float searchTime = 3f;
-
     [Header("Alerta (bombas de ruido)")]
     public float alertTime = 1.5f;
     private float alertTimer;

@@ -5241,6 +5241,7 @@ MonoBehaviour:
     m_Bits: 64
   chaseSpeed: 3.5
   player: {fileID: 750734489}
+  searchTime: 3
   alertTime: 1
   anim: {fileID: 1434193729}
   spriteRendered: {fileID: 1434193726}
@@ -8478,7 +8479,6 @@ GameObject:
   - component: {fileID: 674780055}
   - component: {fileID: 674780058}
   - component: {fileID: 674780056}
-  - component: {fileID: 674780059}
   m_Layer: 7
   m_Name: Visual
   m_TagString: Untagged
@@ -8594,18 +8594,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &674780059
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 674780054}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 693a6af5a066129499060fbba2567c57, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyAnimationFunc
 --- !u!1 &679506943
 GameObject:
   m_ObjectHideFlags: 0
@@ -11726,6 +11714,7 @@ MonoBehaviour:
     m_Bits: 64
   chaseSpeed: 3.5
   player: {fileID: 750734489}
+  searchTime: 3
   alertTime: 1
   anim: {fileID: 674780058}
   spriteRendered: {fileID: 674780055}
@@ -14642,6 +14631,7 @@ MonoBehaviour:
     m_Bits: 64
   chaseSpeed: 3.5
   player: {fileID: 750734489}
+  searchTime: 3
   alertTime: 1
   anim: {fileID: 59606265}
   spriteRendered: {fileID: 59606264}
@@ -19503,7 +19493,6 @@ GameObject:
   - component: {fileID: 1434193726}
   - component: {fileID: 1434193729}
   - component: {fileID: 1434193727}
-  - component: {fileID: 1434193730}
   m_Layer: 7
   m_Name: Visual
   m_TagString: Untagged
@@ -19619,18 +19608,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1434193730
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1434193725}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 693a6af5a066129499060fbba2567c57, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyAnimationFunc
 --- !u!1001 &1435864964
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28218,7 +28195,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3643411992178415777, guid: e9d1fc9378de73749a00d3a96018c8e7, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

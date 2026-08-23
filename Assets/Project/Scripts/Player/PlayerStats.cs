@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -21,13 +22,16 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] private Transform respawnPoint;
     [SerializeField] private MissionDetails missionDetails;
     [SerializeField] private TrashMaganer trashManager;
-
-
     private bool isBeingCaught;
-
     public int CurrentAttempts => currentAttempts;
-    public int MaxAttempts => maxAttempts;
-    public bool IsBeingCaught => isBeingCaught;
+
+    private event Action onAttemptChanged;
+
+    public event Action OnAttemptChanged
+    {
+        add { onAttemptChanged += value; }
+        remove { onAttemptChanged -= value; }
+    }
 
     private void Awake()
     {
@@ -69,7 +73,6 @@ public class PlayerStats : MonoBehaviour
         }
 
         currentAttempts--;
-
         StartCoroutine(CaughtSequence());
         return true;
     }
@@ -90,6 +93,7 @@ public class PlayerStats : MonoBehaviour
         transform.parent.rotation = respawnPoint.rotation;
         missionDetails.ResetCount();
         trashManager.ResetTrash();
+        onAttemptChanged?.Invoke();
         yield return new WaitForSeconds(0.5f);
 
         // Fade in.
@@ -97,6 +101,6 @@ public class PlayerStats : MonoBehaviour
 
         SetMoving(true);
         isBeingCaught = false;
-        print("Player has been caught. Remaining attempts: " + currentAttempts);
+        print("Player has been caught. attempts: " + currentAttempts);
     }
 }
