@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameOver : MonoBehaviour
@@ -17,6 +18,7 @@ public class GameOver : MonoBehaviour
         }
         Instance = this;
         DontDestroyOnLoad(gameObject);
+        //-----------
         gameOverPanel = transform.GetChild(0).gameObject;
         HideGameOver();
     }

@@ -9,6 +9,7 @@ public class Menu : MonoBehaviour
     [SerializeField] private Button howToPlayButton;
     [SerializeField] private Button optionsButton;
     [SerializeField] private Button creditsButton;
+    [SerializeField] private Button exitGameButton;
 
     [Header("Panels")]
     [SerializeField] private GameObject mainMenuPanel;
@@ -28,7 +29,7 @@ public class Menu : MonoBehaviour
         howToPlayButton.onClick.AddListener(HowToPlay);
         optionsButton.onClick.AddListener(Options);
         creditsButton.onClick.AddListener(Credits);
-
+        if (exitGameButton != null) exitGameButton.onClick.AddListener(ExitGame);
         // Back buttons
         howToPlayBackButton.onClick.AddListener(BackToMainMenu);
         optionsBackButton.onClick.AddListener(BackToMainMenu);
@@ -69,6 +70,12 @@ public class Menu : MonoBehaviour
     {
         print("Credits");
         ShowPanel(creditsPanel);
+    }
+
+    private void ExitGame()
+    {
+        print("ExitGame");
+        FlowManager.Instance.ExitGame();
     }
 
     private void BackToMainMenu()

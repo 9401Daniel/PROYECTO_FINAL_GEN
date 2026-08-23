@@ -631,7 +631,7 @@ GameObject:
   - component: {fileID: 280874812}
   - component: {fileID: 280874811}
   m_Layer: 5
-  m_Name: Minigame
+  m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -872,9 +872,8 @@ GameObject:
   - component: {fileID: 560440064}
   - component: {fileID: 560440067}
   - component: {fileID: 560440066}
-  - component: {fileID: 560440065}
   m_Layer: 5
-  m_Name: Remaining Parts Text (1)
+  m_Name: Info
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -899,20 +898,6 @@ RectTransform:
   m_AnchoredPosition: {x: 347.16827, y: 272}
   m_SizeDelta: {x: 375.852, y: 75.237}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &560440065
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 560440063}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d0d4c44dbf1f2e4dac88e016b3c03fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  initialCount: 7
-  countText: Remaining parts
 --- !u!114 &560440066
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1013,6 +998,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 560440063}
   m_CullTransparentMesh: 1
+--- !u!1 &570089348
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 570089349}
+  m_Layer: 0
+  m_Name: =========Singlenton==========
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &570089349
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 570089348}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &577487755
 GameObject:
   m_ObjectHideFlags: 0
@@ -1063,7 +1079,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 0.4245283, g: 0.28235137, b: 0.28235137, a: 0.392}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1418,7 +1434,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1268333001}
   m_Layer: 0
-  m_Name: =========Managers==========
+  m_Name: =========Minigame 1==========
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2538,11 +2554,12 @@ PrefabInstance:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 1268333001}
   - {fileID: 71406358}
   - {fileID: 280874814}
   - {fileID: 1271685216}
-  - {fileID: 268647236}
-  - {fileID: 1268333001}
-  - {fileID: 691824824}
   - {fileID: 1560489153}
+  - {fileID: 570089349}
+  - {fileID: 268647236}
+  - {fileID: 691824824}
   - {fileID: 372467698718354717}

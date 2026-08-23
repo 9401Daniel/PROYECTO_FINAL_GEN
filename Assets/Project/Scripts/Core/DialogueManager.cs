@@ -45,6 +45,7 @@ public class DialogueManager : MonoBehaviour
 
         Instance = this;
         DontDestroyOnLoad(gameObject);
+        //-----------
         dialoguePanel.SetActive(false);
     }
 
@@ -111,11 +112,4 @@ public class DialogueManager : MonoBehaviour
             bombThrower.Active = true;
         activeDialogue = null;
     }
-
-    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        dialoguePanel.SetActive(false);
-
-    }
-
 }
