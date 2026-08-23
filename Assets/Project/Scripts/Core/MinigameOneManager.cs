@@ -15,11 +15,21 @@ public class MinigameOneManager : MonoBehaviour
         if (counter.GameCompleted)
         {
             Debug.Log("Game completed!");
-            StartCoroutine(GoToHome());
+            DialogueManager.Instance.ShowDialogue();
+            DialogueManager.Instance.OnDialogueManagerEnded += GoToHome;
         }
     }
 
-    private IEnumerator GoToHome()
+    private void OnDisable()
+    {
+        DialogueManager.Instance.OnDialogueManagerEnded -= GoToHome;
+    }
+
+    private void GoToHome()
+    {
+        StartCoroutine(GoToHomeCoroutine());
+    }
+    private IEnumerator GoToHomeCoroutine()
     {
         StartCoroutine(Fade.Instance.FadeOut());
         yield return new WaitForSeconds(1f);

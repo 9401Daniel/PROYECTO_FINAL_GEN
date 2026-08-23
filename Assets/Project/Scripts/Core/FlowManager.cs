@@ -5,8 +5,8 @@ using UnityEngine.SceneManagement;
 public class FlowManager : MonoBehaviour
 {
     public static FlowManager Instance { get; private set; }
-    private readonly List<string> _scenesWithLoading = new() { "Central Park", "Downtown", "Chinatown" };
-    public static string targetScene;
+    private readonly List<string> _scenesWithLoading = new() { "Level 1", "Downtown", "Chinatown" }; // Add the names of the scenes that require a loading screen here.
+    public static string targetScene = "Menu";
 
     private void Awake()
     {
@@ -17,6 +17,7 @@ public class FlowManager : MonoBehaviour
         }
         Instance = this;
         DontDestroyOnLoad(gameObject);
+        //-----------
     }
 
     public void GoToScene(string sceneName)
@@ -33,4 +34,10 @@ public class FlowManager : MonoBehaviour
 
         }
     }
+
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
+
 }

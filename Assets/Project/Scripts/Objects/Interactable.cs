@@ -4,11 +4,10 @@ using UnityEngine.InputSystem;
 public abstract class Interactable : MonoBehaviour
 {
     [SerializeField] private GameObject promptUI;
-
     private PlayerInteract playerInRange;
     protected bool active = true;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         promptUI?.SetActive(false);
     }
@@ -51,6 +50,11 @@ public abstract class Interactable : MonoBehaviour
     {
         HidePrompt();
         print("Interact base." + context);
+    }
+
+    public virtual void ResetInteraction()
+    {
+        active = true;
     }
 
     protected void ShowPrompt()

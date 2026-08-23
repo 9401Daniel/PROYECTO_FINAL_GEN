@@ -26,8 +26,6 @@ namespace Minigame
         [SerializeField] private string pieceId;
 
         [Header("Drag behaviour")]
-        [Tooltip("Maximum difference from the slot center for the piece to snap in (canvas units).")]
-        [SerializeField] private float snapDistance = 40f;
 
         [Tooltip("How fast the piece moves back to its start position when released.")]
         [SerializeField] private float returnSpeed = 1200f;
@@ -37,7 +35,6 @@ namespace Minigame
         [SerializeField] private bool bringToFront = true;
 
         private RectTransform rectTransform;
-        private Canvas rootCanvas;
         private Vector2 startAnchoredPosition;
         private Vector2 startSizeDelta;
         private Vector3 startLocalScale;
@@ -56,7 +53,6 @@ namespace Minigame
             startSizeDelta = rectTransform.sizeDelta;
             startLocalScale = rectTransform.localScale;
             startRotation = rectTransform.rotation;
-            rootCanvas = GetComponentInParent<Canvas>();
         }
 
         public void OnPointerDown(PointerEventData eventData)
@@ -131,7 +127,7 @@ namespace Minigame
             if (slotRect == null)
                 return false;
 
-            float allowedDistance = snapDistance + slot.SnapDistance;
+            float allowedDistance = slot.SnapDistance;
             float distance = Vector2.Distance(rectTransform.anchoredPosition, slotRect.anchoredPosition);
             return distance <= allowedDistance;
         }
