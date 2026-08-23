@@ -107,7 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dc3ee67d8056814494d80ca5919594e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Bomb
-  explosionEffect: {fileID: 0}
+  explosionEffect: {fileID: 7926688271488902554, guid: 0122be466d5caec4487c25bba732a3fb, type: 3}
   lifetime: 10
   hearingRadius: 8
   enemyLayerMask:
