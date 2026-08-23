@@ -16588,6 +16588,10 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 7637149349078984416, guid: 657b473d7db17434d9dff6f1f0b37bdd, type: 3}
+      propertyPath: bombThrower
+      value: 
+      objectReference: {fileID: 750734492}
+    - target: {fileID: 7637149349078984416, guid: 657b473d7db17434d9dff6f1f0b37bdd, type: 3}
       propertyPath: respawnPoint
       value: 
       objectReference: {fileID: 1809091034}
