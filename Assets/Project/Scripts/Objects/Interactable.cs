@@ -7,7 +7,7 @@ public abstract class Interactable : MonoBehaviour
     private PlayerInteract playerInRange;
     protected bool active = true;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         promptUI?.SetActive(false);
     }
@@ -52,7 +52,7 @@ public abstract class Interactable : MonoBehaviour
         print("Interact base." + context);
     }
 
-    public void ResetInteraction()
+    public virtual void ResetInteraction()
     {
         active = true;
     }

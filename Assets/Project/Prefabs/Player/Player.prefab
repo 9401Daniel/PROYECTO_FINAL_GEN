@@ -81,8 +81,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerStats
   maxAttempts: 5
   currentAttempts: 5
-  playerMovement: {fileID: 1107923568503050423}
   animator: {fileID: 686207641030958856}
+  playerMovement: {fileID: 1107923568503050423}
+  bombThrower: {fileID: 3781511353601678930}
   holdDuration: 2
   respawnPoint: {fileID: 0}
   missionDetails: {fileID: 0}
