@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2180793071748091869}
   - component: {fileID: 8951977091816241768}
   - component: {fileID: 9210350069932858646}
+  - component: {fileID: 7637149349078984416}
   m_Layer: 3
   m_Name: Body Collider
   m_TagString: Player
@@ -66,6 +67,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62968464b11a74148864e3595249b8a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInteract
+--- !u!114 &7637149349078984416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 589085957311206025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb9bc5c615596e143a4c05cc7d4ed2f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerStats
+  maxAttempts: 5
+  currentAttempts: 5
+  playerMovement: {fileID: 1107923568503050423}
+  animator: {fileID: 686207641030958856}
+  holdDuration: 2
+  respawnPoint: {fileID: 0}
+  missionDetails: {fileID: 0}
+  trashManager: {fileID: 0}
 --- !u!1 &4268314631755302091
 GameObject:
   m_ObjectHideFlags: 0

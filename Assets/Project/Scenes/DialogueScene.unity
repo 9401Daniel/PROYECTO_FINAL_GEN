@@ -198,43 +198,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &162195349
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 162195350}
-  m_Layer: 5
-  m_Name: Dialogue
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &162195350
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 162195349}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 211506308}
-  - {fileID: 1488421532}
-  m_Father: {fileID: 1534952529}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -68.656006, y: 0}
-  m_SizeDelta: {x: 1417.312, y: 720}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &211506307
 GameObject:
   m_ObjectHideFlags: 0
@@ -258,18 +221,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 211506307}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 354440814}
   - {fileID: 785529701}
-  m_Father: {fileID: 162195350}
+  m_Father: {fileID: 1534952529}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 68.656006, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1280, y: 720}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &354440813
@@ -322,7 +285,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.13333334}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.95686275}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -398,6 +361,7 @@ MonoBehaviour:
   - Maybe I'll find some clues over this park.
   typingTime: 0.05
   interact: {fileID: 3001919216989983466, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  inputDebounce: 0.15
 --- !u!1 &466800524
 GameObject:
   m_ObjectHideFlags: 0
@@ -519,12 +483,13 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1488421532}
   m_Father: {fileID: 211506308}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000015258789, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: -0.000015258789, y: 360}
   m_SizeDelta: {x: 1280, y: 720}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &785529702
@@ -613,10 +578,11 @@ MonoBehaviour:
   dialogueText: {fileID: 1488421530}
   dialogueLines:
   - 'It seems she is not here... I am late... '
-  - She is already on a plane to Beijing
-  - But I won't give up, this doesn't end here
+  - She is already on a plane to Beijing.
+  - But I won't give up, this doesn't end here.
   typingTime: 0.05
   interact: {fileID: 3001919216989983466, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  inputDebounce: 0.15
 --- !u!1 &1433977793
 GameObject:
   m_ObjectHideFlags: 0
@@ -668,6 +634,7 @@ MonoBehaviour:
   - Just a little longer, Gaby...
   typingTime: 0.05
   interact: {fileID: 3001919216989983466, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  inputDebounce: 0.15
 --- !u!1 &1441421031
 GameObject:
   m_ObjectHideFlags: 0
@@ -715,10 +682,11 @@ MonoBehaviour:
   dialoguePanel: {fileID: 211506307}
   dialogueText: {fileID: 1488421530}
   dialogueLines:
-  - 'That "delivery" message could mean something '
+  - 'That "delivery" message could mean something. '
   - It's a great area to look for...
   typingTime: 0.05
   interact: {fileID: 3001919216989983466, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  inputDebounce: 0.15
 --- !u!1 &1488421529
 GameObject:
   m_ObjectHideFlags: 0
@@ -844,17 +812,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1488421529}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 162195350}
+  m_Father: {fileID: 785529701}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 137.5855, y: 109}
-  m_SizeDelta: {x: -456.979, y: 96.1788}
+  m_AnchoredPosition: {x: 68.9295, y: 109}
+  m_SizeDelta: {x: -319.667, y: 96.1788}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1534952524
 GameObject:
@@ -868,8 +836,9 @@ GameObject:
   - component: {fileID: 1534952528}
   - component: {fileID: 1534952527}
   - component: {fileID: 1534952526}
+  - component: {fileID: 1534952530}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: Dialog Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -950,7 +919,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 162195350}
+  - {fileID: 1934017528}
+  - {fileID: 211506308}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -958,6 +928,23 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1534952530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1534952524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5014172a97f89cd4a93a6f1e271e0e0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  sceneDialogues:
+  - sceneName: Level 1
+    dialogue: {fileID: 454776010}
+  - sceneName: Minigame 1
+    dialogue: {fileID: 1824189942}
 --- !u!1 &1555147311
 GameObject:
   m_ObjectHideFlags: 0
@@ -1009,6 +996,7 @@ MonoBehaviour:
   - Gaby... Wait a little longer...
   typingTime: 0.05
   interact: {fileID: 3001919216989983466, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  inputDebounce: 0.15
 --- !u!1 &1824189940
 GameObject:
   m_ObjectHideFlags: 0
@@ -1025,7 +1013,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1824189941
 Transform:
   m_ObjectHideFlags: 0
@@ -1057,10 +1045,11 @@ MonoBehaviour:
   dialogueText: {fileID: 1488421530}
   dialogueLines:
   - 'Hum... 317... delivery...  '
-  - I need more clues but this numbers could be mean something
-  - I know where to search
+  - I need more clues but this numbers could be mean something.
+  - I know where to search.
   typingTime: 0.05
   interact: {fileID: 3001919216989983466, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  inputDebounce: 0.15
 --- !u!1 &1934017527
 GameObject:
   m_ObjectHideFlags: 0
@@ -1071,7 +1060,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1934017528}
   m_Layer: 0
-  m_Name: DialogueManager
+  m_Name: Dialogues
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1085,9 +1074,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1934017527}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 326.36624, y: 195.88795, z: 3.83642}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -146.1687, y: -63.698887, z: 5.802988}
+  m_LocalScale: {x: 1.512605, y: 1.512605, z: 1.512605}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 454776009}
@@ -1096,7 +1085,7 @@ Transform:
   - {fileID: 1555147312}
   - {fileID: 1433977794}
   - {fileID: 1320085751}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1534952529}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2007024789
 GameObject:
@@ -1233,4 +1222,3 @@ SceneRoots:
   - {fileID: 2007024791}
   - {fileID: 7685361}
   - {fileID: 1534952529}
-  - {fileID: 1934017528}

@@ -36,17 +36,14 @@ public class EnemyAI : MonoBehaviour
 
     [Header("Captura")]
     [SerializeField] private string playerTag = "Player";
-    [SerializeField] private float catchDuration = 1.5f;
 
     private static readonly int SpeedHash = Animator.StringToHash("Speed");
     private static readonly int MoveXHash = Animator.StringToHash("MoveX");
     private static readonly int MoveZHash = Animator.StringToHash("MoveZ");
     private static readonly int AlertTriggerHash = Animator.StringToHash("AlertTrigger");
     private static readonly int CatchPlayerHash = Animator.StringToHash("CatchPlayer");
-
     private PlayerStats capturedStats;
     private bool catchTriggered;
-    private float catchTimer;
     private NavMeshAgent agent;
 
     void Start()
@@ -151,7 +148,6 @@ public class EnemyAI : MonoBehaviour
         // Limpia captura
         capturedStats = null;
         catchTriggered = false;
-        catchTimer = 0f;
 
         // Reinicia el índice de waypoints para empezar de nuevo la ruta
         currentWaypointIndex = 0;
@@ -260,18 +256,6 @@ public class EnemyAI : MonoBehaviour
         }
 
         anim.SetTrigger(CatchPlayerHash);
-
-        // Tras el tiempo de captura, se reinicia por completo al enemigo
-        // (lo teletransporta al primer waypoint y limpia la alerta/búsqueda/captura).
-        if (catchTimer > 0f)
-        {
-            catchTimer -= Time.deltaTime;
-        }
-        else
-        {
-            catchTimer = catchDuration;
-            ResetEnemy();
-        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -289,7 +273,6 @@ public class EnemyAI : MonoBehaviour
 
         capturedStats = stats;
         catchTriggered = false;
-        catchTimer = catchDuration;
         currentState = State.Catch;
     }
 }
