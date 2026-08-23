@@ -21,7 +21,7 @@ public class BombThrower : MonoBehaviour
     private Vector3 facing;
     private int currentCharges;
     private float cooldownTimer;
-    private int remainingTime;
+    private int remainingTime = 0;
     private Coroutine cooldownLogger;
     private bool isThrowing = false;
     private Vector3 spawnReference;

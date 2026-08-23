@@ -8,11 +8,11 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] private int maxAttempts = 5;
     [SerializeField] private int currentAttempts = 5;
 
-    [Header("Movement")]
-    [SerializeField] private PlayerMovement playerMovement;
-
-    [Header("Animation")]
+    [Header("Player")]
     [SerializeField] private Animator animator;
+    [SerializeField] private PlayerMovement playerMovement;
+    [SerializeField] private BombThrower bombThrower;
+
     private static readonly int CaughtHash = Animator.StringToHash("Caught");
 
     [Header("Fade")]
@@ -20,6 +20,8 @@ public class PlayerStats : MonoBehaviour
 
     [Header("Respawn")]
     [SerializeField] private Transform respawnPoint;
+
+    [Header("Other")]
     [SerializeField] private MissionDetails missionDetails;
     [SerializeField] private TrashMaganer trashManager;
     private bool isBeingCaught;
@@ -49,7 +51,6 @@ public class PlayerStats : MonoBehaviour
         if (respawnPoint == null)
             Debug.LogError("Respawn point is not set.");
     }
-
 
     public void SetMoving(bool value)
     {
@@ -93,6 +94,7 @@ public class PlayerStats : MonoBehaviour
         transform.parent.rotation = respawnPoint.rotation;
         missionDetails.ResetCount();
         trashManager.ResetTrash();
+        bombThrower.RestoreCharges();
         onAttemptChanged?.Invoke();
         yield return new WaitForSeconds(0.5f);
 

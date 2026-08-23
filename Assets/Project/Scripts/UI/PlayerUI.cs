@@ -12,6 +12,8 @@ public class PlayerUI : MonoBehaviour
     {
         playerStats.OnAttemptChanged += UpdateAttemptsUI;
         bombThrower.CooldownLoggerEvent += UpdateCooldownUI;
+        attemptsText.text = playerStats.CurrentAttempts.ToString();
+        cooldownText.text = "Q";
     }
 
     private void UpdateAttemptsUI()
@@ -21,6 +23,12 @@ public class PlayerUI : MonoBehaviour
 
     private void UpdateCooldownUI()
     {
+        if (bombThrower.CurrentCharges == 0)
+        {
+            cooldownText.gameObject.transform.parent.gameObject.SetActive(false);
+            return;
+        }
+        cooldownText.gameObject.transform.parent.gameObject.SetActive(true);
         if (bombThrower.CooldownTimer <= 0)
         {
             cooldownText.text = "Q";
