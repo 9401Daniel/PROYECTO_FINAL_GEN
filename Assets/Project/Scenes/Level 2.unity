@@ -23706,7 +23706,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   missionDetails: {fileID: 951975987}
   playerStats: {fileID: 931366545}
-  minigameSceneName: Menu
+  minigameSceneName: Minigame 2
 --- !u!4 &1796106716
 Transform:
   m_ObjectHideFlags: 0

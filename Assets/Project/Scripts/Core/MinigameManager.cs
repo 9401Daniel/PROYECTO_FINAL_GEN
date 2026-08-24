@@ -1,9 +1,10 @@
 using UnityEngine;
 using System.Collections;
 
-public class MinigameOneManager : MonoBehaviour
+public class MinigameManager : MonoBehaviour
 {
     [SerializeField] private UICounter counter;
+    [SerializeField] private string nextSceneName;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -16,24 +17,24 @@ public class MinigameOneManager : MonoBehaviour
         {
             Debug.Log("Game completed!");
             DialogueManager.Instance.ShowDialogue();
-            DialogueManager.Instance.OnDialogueManagerEnded += GoToHome;
+            DialogueManager.Instance.OnDialogueManagerEnded += GoToNext;
         }
     }
 
     private void OnDisable()
     {
-        DialogueManager.Instance.OnDialogueManagerEnded -= GoToHome;
+        DialogueManager.Instance.OnDialogueManagerEnded -= GoToNext;
     }
 
-    private void GoToHome()
+    private void GoToNext()
     {
-        StartCoroutine(GoToHomeCoroutine());
+        StartCoroutine(GoToNextCoroutine());
     }
-    private IEnumerator GoToHomeCoroutine()
+    private IEnumerator GoToNextCoroutine()
     {
         StartCoroutine(Fade.Instance.FadeOut());
         yield return new WaitForSeconds(1f);
-        FlowManager.Instance.GoToScene("Menu");
+        FlowManager.Instance.GoToScene(nextSceneName);
     }
 
 }
