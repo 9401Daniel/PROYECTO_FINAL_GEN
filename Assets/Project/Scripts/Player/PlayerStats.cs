@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerStats : MonoBehaviour
 {
     [Header("Attempts")]
-    [SerializeField] private int maxAttempts = 5;
     [SerializeField] private int currentAttempts = 5;
 
     [Header("Player")]
@@ -21,9 +20,9 @@ public class PlayerStats : MonoBehaviour
     [Header("Respawn")]
     [SerializeField] private Transform respawnPoint;
 
-    [Header("Other")]
+    [Header("Mission element")]
     [SerializeField] private MissionDetails missionDetails;
-    [SerializeField] private InteractablesManager interactablesManager;
+
     private bool isBeingCaught;
     public int CurrentAttempts => currentAttempts;
 
@@ -43,7 +42,6 @@ public class PlayerStats : MonoBehaviour
         if (playerMovement == null)
             playerMovement = GetComponent<PlayerMovement>();
 
-        currentAttempts = maxAttempts;
     }
 
     private void Start()
@@ -93,7 +91,6 @@ public class PlayerStats : MonoBehaviour
         transform.parent.position = respawnPoint.position;
         transform.parent.rotation = respawnPoint.rotation;
         missionDetails.ResetCount();
-        interactablesManager.ResetItems();
         bombThrower.RestoreCharges();
         onAttemptChanged?.Invoke();
         yield return new WaitForSeconds(0.5f);

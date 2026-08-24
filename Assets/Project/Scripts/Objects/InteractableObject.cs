@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Trash : Interactable
+public class InteractableObject : Interactable
 {
     [SerializeField] private MissionDetails missionDetails;
     [SerializeField] private Material outlineMaterial;
@@ -14,16 +14,16 @@ public class Trash : Interactable
         TurnOnOutlineMode();
         if (outlineMaterial == null)
         {
-            Debug.LogError("Outline material is not assigned in Trash script.");
+            Debug.LogError("Outline material is not assigned in InteractableObject script.");
         }
     }
     protected override void Interact(InputAction.CallbackContext context)
     {
         HidePrompt();
-        print("Interact Trash.");
+        print("Interact InteractableObject.");
         if (missionDetails == null)
         {
-            Debug.LogError("MissionDetails reference is not set in Trash script.");
+            Debug.LogError("MissionDetails reference is not set in InteractableObject script.");
         }
         else
         {

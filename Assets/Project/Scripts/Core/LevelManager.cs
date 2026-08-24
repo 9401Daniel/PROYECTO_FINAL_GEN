@@ -1,10 +1,11 @@
 using System.Collections;
 using UnityEngine;
 
-public class LevelOneManager : MonoBehaviour
+public class LevelManager : MonoBehaviour
 {
     [SerializeField] private MissionDetails missionDetails;
     [SerializeField] private PlayerStats playerStats;
+    [SerializeField] private string minigameSceneName;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -42,6 +43,6 @@ public class LevelOneManager : MonoBehaviour
     {
         StartCoroutine(Fade.Instance.FadeOut());
         yield return new WaitForSeconds(1f);
-        FlowManager.Instance.GoToScene("Minigame 1");
+        FlowManager.Instance.GoToScene(minigameSceneName);
     }
 }

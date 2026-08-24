@@ -495,12 +495,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5014172a97f89cd4a93a6f1e271e0e0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  playerMovement: {fileID: 0}
   sceneDialogues:
   - sceneName: Level 1
     dialogue: {fileID: 8499343758808639107}
   - sceneName: Minigame 1
     dialogue: {fileID: 7863439395956952219}
+  - sceneName: Level 2
+    dialogue: {fileID: 250345192956567445}
+  - sceneName: Minigame 2
+    dialogue: {fileID: 3258951824724589363}
   dialoguePanel: {fileID: 3643411992178415777}
 --- !u!1 &2252378072163036453
 GameObject:
