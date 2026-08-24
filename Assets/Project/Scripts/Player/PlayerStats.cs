@@ -23,7 +23,7 @@ public class PlayerStats : MonoBehaviour
 
     [Header("Other")]
     [SerializeField] private MissionDetails missionDetails;
-    [SerializeField] private TrashMaganer trashManager;
+    [SerializeField] private InteractablesManager interactablesManager;
     private bool isBeingCaught;
     public int CurrentAttempts => currentAttempts;
 
@@ -93,7 +93,7 @@ public class PlayerStats : MonoBehaviour
         transform.parent.position = respawnPoint.position;
         transform.parent.rotation = respawnPoint.rotation;
         missionDetails.ResetCount();
-        trashManager.ResetTrash();
+        interactablesManager.ResetItems();
         bombThrower.RestoreCharges();
         onAttemptChanged?.Invoke();
         yield return new WaitForSeconds(0.5f);

@@ -2518,17 +2518,6 @@ MonoBehaviour:
   targetOpacity: 0.2
   fadeSpeed: 3
   targetCamera: {fileID: 943871658}
---- !u!114 &152749350 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8772331377602514598, guid: c689b1c549c5d3449b855d1349b0dc57, type: 3}
-  m_PrefabInstance: {fileID: 2545397002569370322}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4893448cb194be47a46aa95f6ac4e81, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Trash
 --- !u!1001 &157169734
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20660,14 +20649,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4a2d24cc58fba7418f02370862cf7d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  trashList:
-  - {fileID: 152749350}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  interactables: []
 --- !u!4 &1518495642
 Transform:
   m_ObjectHideFlags: 0
@@ -21433,7 +21415,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Checked garbage: 0/7'
+  m_text: 'Garbage checked: 0/7'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e0fd5001ec53bcc45803621ec9ab214d, type: 2}
   m_sharedMaterial: {fileID: 6731153987858555102, guid: e0fd5001ec53bcc45803621ec9ab214d, type: 2}
@@ -30642,7 +30624,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MisionDetails
   missionText: {fileID: 1571888453}
-  missionTextContent: Checked garbage
+  missionTextContent: Garbage checked
   missionMaxCount: 7
 --- !u!1001 &2107380663
 PrefabInstance:
