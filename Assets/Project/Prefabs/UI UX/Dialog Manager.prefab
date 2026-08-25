@@ -504,6 +504,10 @@ MonoBehaviour:
     dialogue: {fileID: 250345192956567445}
   - sceneName: Minigame 2
     dialogue: {fileID: 3258951824724589363}
+  - sceneName: Level 3
+    dialogue: {fileID: 644510004023141571}
+  - sceneName: Minigame 3
+    dialogue: {fileID: 1599607627642758144}
   dialoguePanel: {fileID: 3643411992178415777}
 --- !u!1 &2252378072163036453
 GameObject:

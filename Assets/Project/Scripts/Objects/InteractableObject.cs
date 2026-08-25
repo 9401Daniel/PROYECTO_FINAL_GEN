@@ -46,13 +46,22 @@ public class InteractableObject : Interactable
         outlineMode = true;
         for (int i = 0; i < transform.childCount; i++)
         {
-            if (!transform.GetChild(i).TryGetComponent(out MeshRenderer meshRenderer)) continue;
-            if (meshRenderer.materials.Length < 1 || meshRenderer.materials[meshRenderer.materials.Length - 1] == outlineMaterial) continue;
-            Material[] currentMaterials = meshRenderer.materials;
+            if (!transform.GetChild(i).TryGetComponent(out MeshRenderer meshRendererC)) continue;
+            if (meshRendererC.materials.Length < 1 || meshRendererC.materials[meshRendererC.materials.Length - 1] == outlineMaterial) continue;
+            Material[] currentMaterials = meshRendererC.materials;
             Material[] newMaterials = new Material[currentMaterials.Length + 1];
             Array.Copy(currentMaterials, newMaterials, currentMaterials.Length);
             newMaterials[currentMaterials.Length] = outlineMaterial;
-            meshRenderer.materials = newMaterials;
+            meshRendererC.materials = newMaterials;
+        }
+        if (TryGetComponent(out MeshRenderer meshRendererP))
+        {
+            if (meshRendererP.materials.Length < 1 || meshRendererP.materials[meshRendererP.materials.Length - 1] == outlineMaterial) return;
+            Material[] currentMaterials = meshRendererP.materials;
+            Material[] newMaterials = new Material[currentMaterials.Length + 1];
+            Array.Copy(currentMaterials, newMaterials, currentMaterials.Length);
+            newMaterials[currentMaterials.Length] = outlineMaterial;
+            meshRendererP.materials = newMaterials;
         }
     }
 
@@ -68,6 +77,15 @@ public class InteractableObject : Interactable
             Material[] newMaterials = new Material[currentMaterials.Length - 1];
             Array.Copy(currentMaterials, newMaterials, currentMaterials.Length - 1);
             meshRenderer.materials = newMaterials;
+        }
+        if (TryGetComponent(out MeshRenderer meshRendererP))
+        {
+            Material[] currentMaterials = meshRendererP.materials;
+            if (currentMaterials.Length != 2) return; // Assuming the outline material is always the last one, we expect exactly 2 materials: the original and the outline.
+            Material[] newMaterials = new Material[currentMaterials.Length - 1];
+            Array.Copy(currentMaterials, newMaterials, currentMaterials.Length - 1);
+            meshRendererP.materials = newMaterials;
+
         }
     }
 }

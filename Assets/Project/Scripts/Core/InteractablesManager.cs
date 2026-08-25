@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 public class InteractablesManager : MonoBehaviour
 {
-    [SerializeField] private List<Interactable> interactables = new();
+    private List<Interactable> interactables = new();
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
