@@ -1,0 +1,398 @@
+; FBX 7.3.0 project file
+; Created by the Blockbench FBX Exporter
+; ----------------------------------------------------
+; 
+
+FBXHeaderExtension:  {
+	FBXHeaderVersion: 1003
+	FBXVersion: 7300
+	EncryptionType: 0
+	CreationTimeStamp:  {
+		Version: 1000
+		Year: 2026
+		Month: 8
+		Day: 24
+		Hour: 17
+		Minute: 33
+		Second: 35
+		Millisecond: 536
+	}
+	Creator: "Blockbench 5.1.6"
+	SceneInfo: "SceneInfo::GlobalInfo", "UserData" {
+		Type: "UserData"
+		Version: 100
+		MetaData:  {
+			Version: 100
+			Title: ""
+			Subject: ""
+			Author: ""
+			Keywords: ""
+			Revision: ""
+			Comment: ""
+		}
+		Properties70:  {
+			P: "DocumentUrl", "KString", "Url", "", "C:\Users\Blockbench\foobar.fbx"
+			P: "SrcDocumentUrl", "KString", "Url", "", "C:\Users\Blockbench\foobar.fbx"
+			P: "Original", "Compound", "", ""
+			P: "Original|ApplicationVendor", "KString", "", "", "Blockbench"
+			P: "Original|ApplicationName", "KString", "", "", "Blockbench FBX Exporter"
+			P: "Original|ApplicationVersion", "KString", "", "", "5.1.6"
+			P: "Original|DateTime_GMT", "DateTime", "", "", "01/01/1970 00:00:00.000"
+			P: "Original|FileName", "KString", "", "", "/foobar.fbx"
+			P: "LastSaved", "Compound", "", ""
+			P: "LastSaved|ApplicationVendor", "KString", "", "", "Blockbench"
+			P: "LastSaved|ApplicationName", "KString", "", "", "Blockbench FBX Exporter"
+			P: "LastSaved|ApplicationVersion", "KString", "", "", "5.1.6"
+			P: "LastSaved|DateTime_GMT", "DateTime", "", "", "01/01/1970 00:00:00.000"
+			P: "Original|ApplicationNativeFile", "KString", "", "", ""
+		}
+	}
+}
+FileId: "iVFoobar"
+CreationTime: "2026-08-24 23:33:35:536"
+Creator: "Made with Blockbench"
+GlobalSettings:  {
+	Version: 1000
+	Properties70:  {
+		P: "UpAxis", "int", "Integer", "",1
+		P: "UpAxisSign", "int", "Integer", "",1
+		P: "FrontAxis", "int", "Integer", "",2
+		P: "FrontAxisSign", "int", "Integer", "",1
+		P: "CoordAxis", "int", "Integer", "",0
+		P: "CoordAxisSign", "int", "Integer", "",1
+		P: "OriginalUpAxis", "int", "Integer", "",-1
+		P: "OriginalUpAxisSign", "int", "Integer", "",1
+		P: "UnitScaleFactor", "double", "Number", "",1
+		P: "OriginalUnitScaleFactor", "double", "Number", "",1
+		P: "AmbientColor", "ColorRGB", "Color", "",0,0,0
+		P: "DefaultCamera", "KString", "", "", "Producer Perspective"
+		P: "TimeMode", "enum", "", "",0
+		P: "TimeSpanStart", "KTime", "Time", "",0
+		P: "TimeSpanStop", "KTime", "Time", "",46186158000
+		P: "CustomFrameRate", "double", "Number", "",24
+	}
+}
+
+; Documents Description
+;------------------------------------------------------------------
+
+Documents:  {
+	Count: 1
+	Document: 1168841275 {
+		Scene: "Scene"
+		Properties70:  {
+			P: "SourceObject", "object", "", ""
+			P: "ActiveAnimStackName", "KString", "", "", ""
+		}
+		RootNode: 0
+	}
+}
+
+; Document References
+;------------------------------------------------------------------
+
+References: 
+
+; Object definitions
+;------------------------------------------------------------------
+
+Definitions:  {
+	Version: 100
+	Count: 6
+	ObjectType: "GlobalSettings" {
+		Count: 1
+	}
+	ObjectType: "Model" {
+		Count: 1
+		PropertyTemplate: "FbxNode" {
+			Properties70:  {
+				P: "QuaternionInterpolate", "enum", "", "",0
+				P: "RotationOffset", "Vector3D", "Vector", "",0,0,0
+				P: "RotationPivot", "Vector3D", "Vector", "",0,0,0
+				P: "ScalingOffset", "Vector3D", "Vector", "",0,0,0
+				P: "ScalingPivot", "Vector3D", "Vector", "",0,0,0
+				P: "TranslationActive", "bool", "", "",0
+				P: "TranslationMin", "Vector3D", "Vector", "",0,0,0
+				P: "TranslationMax", "Vector3D", "Vector", "",0,0,0
+				P: "TranslationMinX", "bool", "", "",0
+				P: "TranslationMinY", "bool", "", "",0
+				P: "TranslationMinZ", "bool", "", "",0
+				P: "TranslationMaxX", "bool", "", "",0
+				P: "TranslationMaxY", "bool", "", "",0
+				P: "TranslationMaxZ", "bool", "", "",0
+				P: "RotationOrder", "enum", "", "",5
+				P: "RotationSpaceForLimitOnly", "bool", "", "",0
+				P: "RotationStiffnessX", "double", "Number", "",0
+				P: "RotationStiffnessY", "double", "Number", "",0
+				P: "RotationStiffnessZ", "double", "Number", "",0
+				P: "AxisLen", "double", "Number", "",10
+				P: "PreRotation", "Vector3D", "Vector", "",0,0,0
+				P: "PostRotation", "Vector3D", "Vector", "",0,0,0
+				P: "RotationActive", "bool", "", "",0
+				P: "RotationMin", "Vector3D", "Vector", "",0,0,0
+				P: "RotationMax", "Vector3D", "Vector", "",0,0,0
+				P: "RotationMinX", "bool", "", "",0
+				P: "RotationMinY", "bool", "", "",0
+				P: "RotationMinZ", "bool", "", "",0
+				P: "RotationMaxX", "bool", "", "",0
+				P: "RotationMaxY", "bool", "", "",0
+				P: "RotationMaxZ", "bool", "", "",0
+				P: "InheritType", "enum", "", "",0
+				P: "ScalingActive", "bool", "", "",0
+				P: "ScalingMin", "Vector3D", "Vector", "",0,0,0
+				P: "ScalingMax", "Vector3D", "Vector", "",1,1,1
+				P: "ScalingMinX", "bool", "", "",0
+				P: "ScalingMinY", "bool", "", "",0
+				P: "ScalingMinZ", "bool", "", "",0
+				P: "ScalingMaxX", "bool", "", "",0
+				P: "ScalingMaxY", "bool", "", "",0
+				P: "ScalingMaxZ", "bool", "", "",0
+				P: "GeometricTranslation", "Vector3D", "Vector", "",0,0,0
+				P: "GeometricRotation", "Vector3D", "Vector", "",0,0,0
+				P: "GeometricScaling", "Vector3D", "Vector", "",1,1,1
+				P: "MinDampRangeX", "double", "Number", "",0
+				P: "MinDampRangeY", "double", "Number", "",0
+				P: "MinDampRangeZ", "double", "Number", "",0
+				P: "MaxDampRangeX", "double", "Number", "",0
+				P: "MaxDampRangeY", "double", "Number", "",0
+				P: "MaxDampRangeZ", "double", "Number", "",0
+				P: "MinDampStrengthX", "double", "Number", "",0
+				P: "MinDampStrengthY", "double", "Number", "",0
+				P: "MinDampStrengthZ", "double", "Number", "",0
+				P: "MaxDampStrengthX", "double", "Number", "",0
+				P: "MaxDampStrengthY", "double", "Number", "",0
+				P: "MaxDampStrengthZ", "double", "Number", "",0
+				P: "PreferedAngleX", "double", "Number", "",0
+				P: "PreferedAngleY", "double", "Number", "",0
+				P: "PreferedAngleZ", "double", "Number", "",0
+				P: "LookAtProperty", "object", "", ""
+				P: "UpVectorProperty", "object", "", ""
+				P: "Show", "bool", "", "",1
+				P: "NegativePercentShapeSupport", "bool", "", "",1
+				P: "DefaultAttributeIndex", "int", "Integer", "",-1
+				P: "Freeze", "bool", "", "",0
+				P: "LODBox", "bool", "", "",0
+				P: "Lcl Translation", "Lcl Translation", "", "A",0,0,0
+				P: "Lcl Rotation", "Lcl Rotation", "", "A",0,0,0
+				P: "Lcl Scaling", "Lcl Scaling", "", "A",1,1,1
+				P: "Visibility", "Visibility", "", "A",1
+				P: "Visibility Inheritance", "Visibility Inheritance", "", "",1
+			}
+		}
+	}
+	ObjectType: "Geometry" {
+		Count: 1
+		PropertyTemplate: "FbxMesh" {
+			Properties70:  {
+				P: "Color", "ColorRGB", "Color", "",0.8,0.8,0.8
+				P: "BBoxMin", "Vector3D", "Vector", "",0,0,0
+				P: "BBoxMax", "Vector3D", "Vector", "",0,0,0
+				P: "Primary Visibility", "bool", "", "",1
+				P: "Casts Shadows", "bool", "", "",1
+				P: "Receive Shadows", "bool", "", "",1
+			}
+		}
+	}
+	ObjectType: "Material" {
+		Count: 1
+		PropertyTemplate: "FbxSurfaceLambert" {
+			Properties70:  {
+				P: "ShadingModel", "KString", "", "", "Lambert"
+				P: "MultiLayer", "bool", "", "",0
+				P: "EmissiveColor", "Color", "", "A",0,0,0
+				P: "EmissiveFactor", "Number", "", "A",1
+				P: "AmbientColor", "Color", "", "A",0.2,0.2,0.2
+				P: "AmbientFactor", "Number", "", "A",1
+				P: "DiffuseColor", "Color", "", "A",0.8,0.8,0.8
+				P: "DiffuseFactor", "Number", "", "A",1
+				P: "Bump", "Vector3D", "Vector", "",0,0,0
+				P: "NormalMap", "Vector3D", "Vector", "",0,0,0
+				P: "BumpFactor", "double", "Number", "",1
+				P: "TransparentColor", "Color", "", "A",0,0,0
+				P: "TransparencyFactor", "Number", "", "A",0
+				P: "DisplacementColor", "ColorRGB", "Color", "",0,0,0
+				P: "DisplacementFactor", "double", "Number", "",1
+				P: "VectorDisplacementColor", "ColorRGB", "Color", "",0,0,0
+				P: "VectorDisplacementFactor", "double", "Number", "",1
+			}
+		}
+	}
+	ObjectType: "Texture" {
+		Count: 1
+		PropertyTemplate: "FbxFileTexture" {
+			Properties70:  {
+				P: "TextureTypeUse", "enum", "", "",0
+				P: "Texture alpha", "Number", "", "A",1
+				P: "CurrentMappingType", "enum", "", "",0
+				P: "WrapModeU", "enum", "", "",0
+				P: "WrapModeV", "enum", "", "",0
+				P: "UVSwap", "bool", "", "",0
+				P: "PremultiplyAlpha", "bool", "", "",1
+				P: "Translation", "Vector", "", "A",0,0,0
+				P: "Rotation", "Vector", "", "A",0,0,0
+				P: "Scaling", "Vector", "", "A",1,1,1
+				P: "TextureRotationPivot", "Vector3D", "Vector", "",0,0,0
+				P: "TextureScalingPivot", "Vector3D", "Vector", "",0,0,0
+				P: "CurrentTextureBlendMode", "enum", "", "",1
+				P: "UVSet", "KString", "", "", "default"
+				P: "UseMaterial", "bool", "", "",0
+				P: "UseMipMap", "bool", "", "",0
+			}
+		}
+	}
+	ObjectType: "Video" {
+		Count: 1
+		PropertyTemplate: "FbxVideo" {
+			Properties70:  {
+				P: "ImageSequence", "bool", "", "",0
+				P: "ImageSequenceOffset", "int", "Integer", "",0
+				P: "FrameRate", "double", "Number", "",0
+				P: "LastFrame", "int", "Integer", "",0
+				P: "Width", "int", "Integer", "",0
+				P: "Height", "int", "Integer", "",0
+				P: "Path", "KString", "XRefUrl", "", ""
+				P: "StartFrame", "int", "Integer", "",0
+				P: "StopFrame", "int", "Integer", "",0
+				P: "PlaySpeed", "double", "Number", "",0
+				P: "Offset", "KTime", "Time", "",0
+				P: "InterlaceMode", "enum", "", "",0
+				P: "FreeRunning", "bool", "", "",0
+				P: "Loop", "bool", "", "",0
+				P: "AccessMode", "enum", "", "",0
+			}
+		}
+	}
+}
+
+; Object properties
+;------------------------------------------------------------------
+
+Objects:  {
+	Model: 78779100, "Model::plane", "Mesh" {
+		Version: 232
+		Properties70:  {
+			P: "RotationActive", "bool", "", "",1
+			P: "InheritType", "enum", "", "",1
+			P: "ScalingMax", "Vector3D", "Vector", "",0,0,0
+			P: "Lcl Translation", "Lcl Translation", "", "A",0,31.25,0
+			P: "RotationPivot", "Vector3D", "Vector", "",0,0,0
+			P: "Lcl Rotation", "Lcl Rotation", "", "A",90,0,0
+			P: "RotationOrder", "enum", "", "",5
+			P: "DefaultAttributeIndex", "int", "Integer", "",0
+		}
+		Shading: Y
+		Culling: "CullingOff"
+	}
+	Geometry: 75824015, "Geometry::plane", "Mesh" {
+		Vertices: *12 {
+			a: 25,0,25,25,0,-25,-25,0,25,-25,0,-25
+		}
+		PolygonVertexIndex: *4 {
+			a: 0,1,3,-3
+		}
+		GeometryVersion: 124
+		LayerElementNormal: 0 {
+			Version: 101
+			Name: ""
+			MappingInformationType: "ByPolygon"
+			ReferenceInformationType: "Direct"
+			Normals: *3 {
+				a: 0,1,0
+			}
+		}
+		LayerElementUV: 0 {
+			Version: 101
+			Name: ""
+			MappingInformationType: "ByPolygonVertex"
+			ReferenceInformationType: "Direct"
+			UV: *8 {
+				a: 1,0,1,1,0,1,0,0
+			}
+		}
+		LayerElementMaterial: 0 {
+			Version: 101
+			Name: ""
+			MappingInformationType: "AllSame"
+			ReferenceInformationType: "IndexToDirect"
+			Materials: *1 {
+				a: 0
+			}
+		}
+		Layer: 0 {
+			Version: 100
+			LayerElement:  {
+				Type: "LayerElementNormal"
+				TypedIndex: 0
+			}
+			LayerElement:  {
+				Type: "LayerElementMaterial"
+				TypedIndex: 0
+			}
+			LayerElement:  {
+				Type: "LayerElementUV"
+				TypedIndex: 0
+			}
+		}
+	}
+	Material: 75102453, "Material::yellownumber3.png", "" {
+		Version: 102
+		ShadingModel: "lambert"
+		MultiLayer: 0
+		Properties70:  {
+			P: "Emissive", "Vector3D", "Vector", "",0,0,0
+			P: "Ambient", "Vector3D", "Vector", "",0.2,0.2,0.2
+			P: "Diffuse", "Vector3D", "Vector", "",0.8,0.8,0.8
+			P: "Opacity", "double", "Number", "",1
+		}
+	}
+	Texture: 77420019, "Texture::yellownumber3.png", "" {
+		Type: "TextureVideoClip"
+		Version: 202
+		TextureName: "Texture::yellownumber3.png"
+		Media: "Video::yellownumber3.png"
+		FileName: "E:\3D mODELS\Urban\GraffitiNumbers\Number3\yellownumber3.png"
+		RelativeFilename: "yellownumber3.png"
+		ModelUVTranslation: 0,0
+		ModelUVScaling: 1,1
+		Texture_Alpha_Source: "None"
+		Cropping: 0,0,0,0
+	}
+	Video: 70276273, "Video::yellownumber3.png", "Clip" {
+		Type: "Clip"
+		Properties70:  {
+			P: "Path", "KString", "XRefUrl", "", "E:\3D mODELS\Urban\GraffitiNumbers\Number3\yellownumber3.png"
+		}
+		UseMipMap: 0
+		Filename: "E:\3D mODELS\Urban\GraffitiNumbers\Number3\yellownumber3.png"
+		RelativeFilename: "yellownumber3.png"
+		Content: "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"
+	}
+}
+
+; Object connections
+;------------------------------------------------------------------
+
+Connections:  {
+
+	;Model::plane, Model::RootNode
+	C: "OO",78779100,0
+
+	;Geometry::plane, Model::plane
+	C: "OO",75824015,78779100
+
+	;Material::yellownumber3.png, Model::plane
+	C: "OO",75102453,78779100
+
+	;Texture::yellownumber3.png, Material::yellownumber3.png
+	C: "OP",77420019,75102453, "DiffuseColor"
+
+	;Video::yellownumber3.png, Texture::yellownumber3.png
+	C: "OO",70276273,77420019
+}
+
+; Takes section
+;------------------------------------------------------------------
+
+Takes:  {
+	Current: ""
+}
