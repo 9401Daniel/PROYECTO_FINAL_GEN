@@ -54,7 +54,7 @@ MonoBehaviour:
   backgroundMusic: {fileID: 8300000, guid: 95af2fbed723e4278aa6febcac8ae87c, type: 3}
   sfxAmbience: {fileID: 8300000, guid: 9e4cccfa2ebc4445fa285cdbc851fed0, type: 3}
   sfxClickButton: {fileID: 0}
-  sfxPlayerDamage: {fileID: 0}
+  sfxPlayerDamage: {fileID: 8300000, guid: 5fb590c89ca3c4e9b92775efbf6e5226, type: 3}
   sfxPlayerInteraction: {fileID: 0}
   sfxBombSound: {fileID: 0}
   ambienceRelativeLevel: 0.5

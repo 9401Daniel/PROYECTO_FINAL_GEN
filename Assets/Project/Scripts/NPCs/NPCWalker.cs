@@ -20,8 +20,8 @@ public class NPCWalker : MonoBehaviour
     private float waitTimer;
 
     [Header("Animación")]
-    [SerializeField] private Animator anim;
-    [SerializeField] private SpriteRenderer spriteRendered;
+    private Animator anim;
+    private SpriteRenderer spriteRendered;
 
     private static readonly int SpeedHash = Animator.StringToHash("Speed");
     private static readonly int MoveXHash = Animator.StringToHash("MoveX");
