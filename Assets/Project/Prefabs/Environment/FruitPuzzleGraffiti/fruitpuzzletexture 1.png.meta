@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 03219df1452ecb74a94afa5b6c21ccfa
+guid: 0e4d84cac0b6a1d4ebcaa62063df1a74
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -136,13 +136,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: number9texture 1_0
+      name: fruitpuzzletexture 1_0
       rect:
         serializedVersion: 2
-        x: 35
-        y: 9
-        width: 63
-        height: 107
+        x: 1
+        y: 49
+        width: 122
+        height: 40
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -151,8 +151,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 720aa113925f90f4da99725f833092f4
-      internalID: 780138851
+      spriteID: 515c15f1e269c7e4c8ba53bbfa05298a
+      internalID: -1716293476
       vertices: []
       indices: 
       edges: []
@@ -173,7 +173,7 @@ TextureImporter:
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      number9texture 1_0: 780138851
+      fruitpuzzletexture 1_0: -1716293476
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
