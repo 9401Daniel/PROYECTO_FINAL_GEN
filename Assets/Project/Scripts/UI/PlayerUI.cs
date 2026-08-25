@@ -8,8 +8,8 @@ public class PlayerUI : MonoBehaviour
     [SerializeField] private BombThrower bombThrower;
     [SerializeField] private TextMeshProUGUI attemptsText;
     [SerializeField] private TextMeshProUGUI cooldownText;
+    [SerializeField] private Button menuButton;
     private Image iconImage;
-
     private GameObject parentObject;
 
     void Start()
@@ -49,6 +49,11 @@ public class PlayerUI : MonoBehaviour
     public void SetActive(bool isActive)
     {
         gameObject.SetActive(isActive);
+    }
+
+    private void GoToMenu()
+    {
+        FlowManager.Instance.GoToScene("Menu");
     }
 
 }
