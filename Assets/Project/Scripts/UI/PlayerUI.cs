@@ -20,6 +20,7 @@ public class PlayerUI : MonoBehaviour
         cooldownText.text = "Q";
         parentObject = cooldownText.gameObject.transform.parent.gameObject;
         iconImage = parentObject.GetComponentInChildren<Image>();
+        menuButton.onClick.AddListener(GoToMenu);
     }
 
     private void UpdateAttemptsUI()
