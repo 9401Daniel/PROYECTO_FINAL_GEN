@@ -12502,8 +12502,8 @@ MonoBehaviour:
   sfxAmbience: {fileID: 0}
   sfxClickButton: {fileID: 0}
   sfxPlayerDamage: {fileID: 0}
-  sfxPlayerDeath: {fileID: 0}
-  sfxStartGame: {fileID: 0}
+  sfxPlayerInteraction: {fileID: 0}
+  sfxBombSound: {fileID: 0}
   ambienceRelativeLevel: 0.5
   sceneMusicList:
   - sceneName: Level 1
@@ -23986,6 +23986,58 @@ PrefabInstance:
       propertyPath: playerStats
       value: 
       objectReference: {fileID: 931366545}
+    - target: {fileID: 5604605683389941308, guid: 75ca4d34b91ec8b4fad01fd8b51ec33b, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5604605683389941308, guid: 75ca4d34b91ec8b4fad01fd8b51ec33b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5604605683389941308, guid: 75ca4d34b91ec8b4fad01fd8b51ec33b, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5604605683389941308, guid: 75ca4d34b91ec8b4fad01fd8b51ec33b, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5604605683389941308, guid: 75ca4d34b91ec8b4fad01fd8b51ec33b, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 146.79358
+      objectReference: {fileID: 0}
+    - target: {fileID: 5604605683389941308, guid: 75ca4d34b91ec8b4fad01fd8b51ec33b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 102
+      objectReference: {fileID: 0}
+    - target: {fileID: 5604605683389941308, guid: 75ca4d34b91ec8b4fad01fd8b51ec33b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -47
+      objectReference: {fileID: 0}
+    - target: {fileID: 8245963318095271235, guid: 75ca4d34b91ec8b4fad01fd8b51ec33b, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8245963318095271235, guid: 75ca4d34b91ec8b4fad01fd8b51ec33b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8245963318095271235, guid: 75ca4d34b91ec8b4fad01fd8b51ec33b, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8245963318095271235, guid: 75ca4d34b91ec8b4fad01fd8b51ec33b, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8245963318095271235, guid: 75ca4d34b91ec8b4fad01fd8b51ec33b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 8245963318095271235, guid: 75ca4d34b91ec8b4fad01fd8b51ec33b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 88
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -19238,8 +19238,8 @@ MonoBehaviour:
   sfxAmbience: {fileID: 0}
   sfxClickButton: {fileID: 0}
   sfxPlayerDamage: {fileID: 0}
-  sfxPlayerDeath: {fileID: 0}
-  sfxStartGame: {fileID: 0}
+  sfxPlayerInteraction: {fileID: 0}
+  sfxBombSound: {fileID: 0}
   ambienceRelativeLevel: 0.5
   sceneMusicList:
   - sceneName: Level 1
