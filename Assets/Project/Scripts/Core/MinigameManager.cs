@@ -36,6 +36,11 @@ public class MinigameManager : MonoBehaviour
     {
         StartCoroutine(Fade.Instance.FadeOut());
         yield return new WaitForSeconds(1f);
+        //Proximamente pantalla continuidad
+        if (nextSceneName == "Menu")
+        {
+            SaveManager.Instance.ResetProgress();
+        }
         FlowManager.Instance.GoToScene(nextSceneName);
     }
 

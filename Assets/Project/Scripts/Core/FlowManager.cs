@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class FlowManager : MonoBehaviour
 {
     public static FlowManager Instance { get; private set; }
-    private readonly List<string> _scenesWithLoading = new() { "Level 1", "Downtown", "Chinatown" }; // Add the names of the scenes that require a loading screen here.
+    public readonly List<string> _scenesWithLoading = new() { "Level 1", "Level 2", "Chinatown" }; // Add the names of the scenes that require a loading screen here.
     public static string targetScene = "Menu";
 
     private void Awake()

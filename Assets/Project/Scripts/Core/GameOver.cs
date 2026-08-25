@@ -30,7 +30,6 @@ public class GameOver : MonoBehaviour
     public void HideGameOver()
     {
         gameOverPanel.SetActive(false);
-        SaveManager.Instance.ResetProgress();
     }
 
     private void Start()
@@ -42,12 +41,14 @@ public class GameOver : MonoBehaviour
     private void Retry()
     {
         HideGameOver();
+        SaveManager.Instance.ResetProgress();
         FlowManager.Instance.GoToScene("Level 1");
     }
 
     private void MainMenu()
     {
         HideGameOver();
+        SaveManager.Instance.ResetProgress();
         FlowManager.Instance.GoToScene("Menu");
     }
 

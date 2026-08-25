@@ -4,14 +4,12 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
-    [Header("Attempts")]
-    [SerializeField] private int currentAttempts = 5;
+    private int currentAttempts = 5;
 
     [Header("Player")]
     [SerializeField] private Animator animator;
     [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private BombThrower bombThrower;
-
     private static readonly int CaughtHash = Animator.StringToHash("Caught");
 
     [Header("Fade")]
@@ -25,7 +23,6 @@ public class PlayerStats : MonoBehaviour
 
     private bool isBeingCaught;
     public int CurrentAttempts => currentAttempts;
-
     private event Action onAttemptChanged;
 
     public event Action OnAttemptChanged
@@ -49,6 +46,7 @@ public class PlayerStats : MonoBehaviour
         if (respawnPoint == null)
             Debug.LogError("Respawn point is not set.");
         currentAttempts = SaveManager.Instance.AttemptsRemaining;
+        onAttemptChanged?.Invoke();
     }
 
     public void SetMoving(bool value)
@@ -61,21 +59,23 @@ public class PlayerStats : MonoBehaviour
     /// Called by the enemy when it catches the player. Reduces attempts and runs
     /// the caught sequence once. Returns false if already being caught.
     /// </summary>
-    public bool LoseAttempt()
+    public void LoseAttempt()
     {
         if (isBeingCaught)
-            return false;
-
+        {
+            print("Player is already being caught.");
+            return;
+        }
         if (currentAttempts <= 0)
         {
+            print("Player caught. Current attempts: " + currentAttempts);
             // No attempts left: Game Over HERE
-            return false;
+            return;
         }
 
         currentAttempts--;
         SaveManager.Instance.AttemptsRemaining = currentAttempts;
         StartCoroutine(CaughtSequence());
-        return true;
     }
 
     private IEnumerator CaughtSequence()

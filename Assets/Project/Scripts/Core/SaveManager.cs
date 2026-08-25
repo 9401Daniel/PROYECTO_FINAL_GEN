@@ -47,10 +47,11 @@ public class SaveManager : MonoBehaviour
         }
     }
 
+    [ContextMenu("Reset Progress")]
     public void ResetProgress()
     {
         PlayerPrefs.DeleteKey(KEY_LAST_LEVEL_COMPLETED);
-        PlayerPrefs.DeleteKey(KEY_ATTEMPTS_LEFT);
+        AttemptsRemaining = DEFAULT_ATTEMPTS;
         PlayerPrefs.DeleteKey(KEY_LAST_CHECKPOINT);
         PlayerPrefs.Save();
     }

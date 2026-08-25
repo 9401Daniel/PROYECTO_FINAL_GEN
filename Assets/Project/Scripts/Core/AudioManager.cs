@@ -22,8 +22,8 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip sfxAmbience;
     [SerializeField] private AudioClip sfxClickButton;
     [SerializeField] private AudioClip sfxPlayerDamage;
-    [SerializeField] private AudioClip sfxPlayerDeath;
-    [SerializeField] private AudioClip sfxStartGame;
+    [SerializeField] private AudioClip sfxPlayerInteraction;
+    [SerializeField] private AudioClip sfxBombSound;
 
     [Header("Balance de Ambiente")]
     [Tooltip("El ambiente es solo de apoyo, así que suena a este % del volumen de música (0.5 = mitad de fuerte)")]
@@ -43,7 +43,6 @@ public class AudioManager : MonoBehaviour
 
     void Awake()
     {
-        //PlayerPrefs.DeleteAll();      //<--- Descomentar en caso de que se corrompan las player prefs
         if (Instance == null)
         {
             Instance = this;
@@ -69,9 +68,13 @@ public class AudioManager : MonoBehaviour
     void Start()
     {
         LoadVolumeSettings();
-
         PlayBackgroundMusic(backgroundMusic);
-        PlayAmbienceSound(sfxAmbience);
+
+        bool isSceneWithLoading = FlowManager.Instance._scenesWithLoading.Contains(SceneManager.GetActiveScene().name);
+        if (isSceneWithLoading) //Scenes with ambients sound
+        {
+            PlayAmbienceSound(sfxAmbience);
+        }
     }
 
     private void HandleSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -80,6 +83,16 @@ public class AudioManager : MonoBehaviour
 
         if (match != null && match.musicClip != null)
             PlayBackgroundMusic(match.musicClip);
+
+        if (FlowManager.Instance._scenesWithLoading.Contains(scene.name)) //Scenes with ambients sound
+        {
+            PlayAmbienceSound(sfxAmbience);
+        }
+        else
+        {
+            if (ambienceSource != null && ambienceSource.isPlaying)
+                ambienceSource.Stop();
+        }
     }
 
     // ----- Música y ambiente -----
@@ -87,15 +100,8 @@ public class AudioManager : MonoBehaviour
     public void PlayBackgroundMusic(AudioClip clip)
     {
 
-        if (clip == null || musicSource == null) 
-        {
-            return;
-        }
-        if (musicSource.clip == clip && musicSource.isPlaying) 
-        {
-            return;
-        }
-
+        if (clip == null || musicSource == null) return;
+        if (musicSource.clip == clip && musicSource.isPlaying) return;
         musicSource.clip = clip;
         musicSource.loop = true;
         musicSource.Play();
@@ -121,10 +127,10 @@ public class AudioManager : MonoBehaviour
             sfxSource.PlayOneShot(clip);
     }
 
-    public void PlaySFXClickButton()  => PlaySfx(sfxClickButton);
+    public void PlaySFXClickButton() => PlaySfx(sfxClickButton);
     public void PlaySFXPlayerDamage() => PlaySfx(sfxPlayerDamage);
-    public void PlaySFXPlayerDeath()  => PlaySfx(sfxPlayerDeath);
-    public void PlaySFXStartGame()    => PlaySfx(sfxStartGame);
+    public void PlaySFXPlayerInteraction() => PlaySfx(sfxPlayerInteraction);
+    public void PlaySFXBombSound() => PlaySfx(sfxBombSound);
 
     // ----- Volumen (llamado desde OptionsManager) -----
     // El slider manda un valor lineal 0-1; el AudioMixer trabaja en decibelios,
@@ -156,12 +162,11 @@ public class AudioManager : MonoBehaviour
 
     private void SetMixerVolume(string exposedParameter, float linearValue)
     {
-        if (audioMixer == null) 
+        if (audioMixer == null)
         {
             Debug.Log("Mixer nulo");
             return;
         }
-        
         float dB;
         // Si el valor del slider es exactamente 0 o cercano a 0, aplicamos silencio absoluto (-80dB)
         if (linearValue <= 0.0001f)
