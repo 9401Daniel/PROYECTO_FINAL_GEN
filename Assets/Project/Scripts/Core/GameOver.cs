@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameOver : MonoBehaviour
@@ -31,6 +30,7 @@ public class GameOver : MonoBehaviour
     public void HideGameOver()
     {
         gameOverPanel.SetActive(false);
+        SaveManager.Instance.ResetProgress();
     }
 
     private void Start()

@@ -16,6 +16,8 @@ public class MinigameManager : MonoBehaviour
         if (counter.GameCompleted)
         {
             Debug.Log("Game completed!");
+            SaveManager.Instance.LastLevelCompleted++;
+            SaveManager.Instance.LastCheckpoint = false;
             DialogueManager.Instance.ShowDialogue();
             DialogueManager.Instance.OnDialogueManagerEnded += GoToNext;
         }

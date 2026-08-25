@@ -20,6 +20,7 @@ public class LevelManager : MonoBehaviour
         if (missionDetails.MissionCompleted)
         {
             Debug.Log("Mission completed!");
+            SaveManager.Instance.LastCheckpoint = true;
             StartCoroutine(GoToMinigame());
         }
     }
@@ -34,8 +35,8 @@ public class LevelManager : MonoBehaviour
     {
         if (playerStats.CurrentAttempts <= 0)
         {
-            GameOver.Instance.ShowGameOver();
             playerStats.SetMoving(false);
+            GameOver.Instance.ShowGameOver();
         }
     }
 

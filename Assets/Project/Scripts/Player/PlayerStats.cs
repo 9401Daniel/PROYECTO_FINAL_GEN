@@ -48,6 +48,7 @@ public class PlayerStats : MonoBehaviour
     {
         if (respawnPoint == null)
             Debug.LogError("Respawn point is not set.");
+        currentAttempts = SaveManager.Instance.AttemptsRemaining;
     }
 
     public void SetMoving(bool value)
@@ -72,6 +73,7 @@ public class PlayerStats : MonoBehaviour
         }
 
         currentAttempts--;
+        SaveManager.Instance.AttemptsRemaining = currentAttempts;
         StartCoroutine(CaughtSequence());
         return true;
     }
