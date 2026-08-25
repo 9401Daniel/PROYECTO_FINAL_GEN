@@ -55,7 +55,8 @@ public class Menu : MonoBehaviour
                 }
                 else
                 {
-                    print("Start Level 1.");
+                    print("New Game! Start Level 1.");
+                    SaveManager.Instance.AttemptsRemaining = 5;
                     return "Level 1";
                 }
             case 1:
@@ -81,7 +82,8 @@ public class Menu : MonoBehaviour
                     return "Level 3";
                 }
             default:
-                print("Start Level 1.");
+                print("New Game! Start Level 1.");
+                SaveManager.Instance.AttemptsRemaining = 5;
                 return "Level 1";
         }
     }
