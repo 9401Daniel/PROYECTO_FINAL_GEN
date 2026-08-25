@@ -112,4 +112,26 @@ public class DialogueManager : MonoBehaviour
             bombThrower.Active = true;
         activeDialogue = null;
     }
+    private void HandleSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == "Menu")
+        {
+            dialoguePanel.SetActive(false);
+            if (activeDialogue != null)
+            {
+                activeDialogue.OnDialogueEnded -= HandleDialogueEnded;
+                activeDialogue.gameObject.SetActive(false);
+                activeDialogue = null;
+            }
+        }
+    }
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += HandleSceneLoaded;
+    }
+
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= HandleSceneLoaded;
+    }
 }
