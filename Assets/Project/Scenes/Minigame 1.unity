@@ -2097,7 +2097,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MinigameOneManager
   counter: {fileID: 1582486995}
-  nextSceneName: Menu
+  nextSceneName: Level 2
   menuButton: {fileID: 380769029}
 --- !u!4 &1560489153
 Transform:
