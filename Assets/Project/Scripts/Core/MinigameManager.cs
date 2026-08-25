@@ -1,15 +1,18 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class MinigameManager : MonoBehaviour
 {
     [SerializeField] private UICounter counter;
     [SerializeField] private string nextSceneName;
+    [SerializeField] private Button menuButton;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         StartCoroutine(Fade.Instance.FadeIn());
         counter.OnCountChanged += ValidateMission;
+        menuButton.onClick.AddListener(GoToMenu);
     }
     private void ValidateMission()
     {
@@ -42,6 +45,11 @@ public class MinigameManager : MonoBehaviour
             SaveManager.Instance.ResetProgress();
         }
         FlowManager.Instance.GoToScene(nextSceneName);
+    }
+
+    private void GoToMenu()
+    {
+        FlowManager.Instance.GoToScene("Menu");
     }
 
 }
