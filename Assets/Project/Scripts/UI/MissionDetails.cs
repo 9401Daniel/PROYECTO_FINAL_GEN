@@ -7,6 +7,7 @@ public class MissionDetails : MonoBehaviour
     [SerializeField] private TextMeshProUGUI missionText;
     [SerializeField] private string missionTextContent;
     [SerializeField] private int missionMaxCount;
+    [SerializeField] private InteractablesManager interactablesManager;
     private int initialCount = 0;
 
     public event Action OnMissionCountChanged;
@@ -16,6 +17,14 @@ public class MissionDetails : MonoBehaviour
     {
         initialCount++;
         missionText.text = missionTextContent + ": " + initialCount + "/" + missionMaxCount;
+        OnMissionCountChanged?.Invoke();
+    }
+
+    public void ResetCount()
+    {
+        initialCount = 0;
+        missionText.text = missionTextContent + ": " + initialCount + "/" + missionMaxCount;
+        interactablesManager.ResetItems();
         OnMissionCountChanged?.Invoke();
     }
 

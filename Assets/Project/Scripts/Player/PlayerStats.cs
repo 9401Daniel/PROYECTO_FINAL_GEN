@@ -1,0 +1,107 @@
+using System;
+using System.Collections;
+using UnityEngine;
+
+public class PlayerStats : MonoBehaviour
+{
+    private int currentAttempts = 5;
+
+    [Header("Player")]
+    [SerializeField] private Animator animator;
+    [SerializeField] private PlayerMovement playerMovement;
+    [SerializeField] private BombThrower bombThrower;
+    private static readonly int CaughtHash = Animator.StringToHash("Caught");
+
+    [Header("Fade")]
+    [SerializeField] private float holdDuration = 2f;
+
+    [Header("Respawn")]
+    [SerializeField] private Transform respawnPoint;
+
+    [Header("Mission element")]
+    [SerializeField] private MissionDetails missionDetails;
+
+    private bool isBeingCaught;
+    public int CurrentAttempts => currentAttempts;
+    private event Action onAttemptChanged;
+
+    public event Action OnAttemptChanged
+    {
+        add { onAttemptChanged += value; }
+        remove { onAttemptChanged -= value; }
+    }
+
+    private void Awake()
+    {
+        if (animator == null)
+            animator = GetComponentInChildren<Animator>();
+
+        if (playerMovement == null)
+            playerMovement = GetComponent<PlayerMovement>();
+
+    }
+
+    private void Start()
+    {
+        if (respawnPoint == null)
+            Debug.LogError("Respawn point is not set.");
+        currentAttempts = SaveManager.Instance.AttemptsRemaining;
+        onAttemptChanged?.Invoke();
+    }
+
+    public void SetMoving(bool value)
+    {
+        if (playerMovement != null)
+            playerMovement.IsMoving = value;
+    }
+
+    /// <summary>
+    /// Called by the enemy when it catches the player. Reduces attempts and runs
+    /// the caught sequence once. Returns false if already being caught.
+    /// </summary>
+    public void LoseAttempt()
+    {
+        if (isBeingCaught)
+        {
+            print("Player is already being caught.");
+            return;
+        }
+        if (currentAttempts <= 0)
+        {
+            print("Player caught. Current attempts: " + currentAttempts);
+            // No attempts left: Game Over HERE
+            return;
+        }
+
+        currentAttempts--;
+        SaveManager.Instance.AttemptsRemaining = currentAttempts;
+        StartCoroutine(CaughtSequence());
+    }
+
+    private IEnumerator CaughtSequence()
+    {
+        isBeingCaught = true;
+        SetMoving(false);
+
+        // Play Caught animation.
+        animator.SetTrigger(CaughtHash);
+
+        // Fade out.
+        StartCoroutine(Fade.Instance.FadeOut());
+        yield return new WaitForSeconds(holdDuration);
+        // Teleport back to start / respawn point.
+        transform.parent.position = respawnPoint.position;
+        transform.parent.rotation = respawnPoint.rotation;
+        missionDetails.ResetCount();
+        bombThrower.RestoreCharges();
+        onAttemptChanged?.Invoke();
+        yield return new WaitForSeconds(0.5f);
+
+        // Fade in.
+        StartCoroutine(Fade.Instance.FadeIn());
+
+        SetMoving(true);
+        isBeingCaught = false;
+        print("Player has been caught. attempts: " + currentAttempts);
+    }
+}
