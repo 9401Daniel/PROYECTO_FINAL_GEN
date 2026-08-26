@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class Fade : MonoBehaviour
 {
@@ -18,9 +19,12 @@ public class Fade : MonoBehaviour
         }
         Instance = this;
         DontDestroyOnLoad(gameObject);
-
+        //-----------
         fadePanel = transform.GetChild(0).GetComponent<Image>();
-        StartCoroutine(FadeIn());
+        if (SceneManager.GetActiveScene().name.Equals("Loading"))
+        {
+            fadePanel.gameObject.SetActive(false);
+        }
     }
 
     public IEnumerator FadeIn()
@@ -55,4 +59,5 @@ public class Fade : MonoBehaviour
 
         fadePanel.color = new Color(0f, 0f, 0f, 1f);
     }
+
 }

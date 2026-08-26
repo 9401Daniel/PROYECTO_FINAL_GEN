@@ -3,7 +3,22 @@ guid: 9fae6ed43c11dd04998184f947b75e78
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: agarredelbasurero.png
+    second: {fileID: 2100000, guid: eb38520f912a0e441986f81b5c5e8a2f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: metalbin.png
+    second: {fileID: 2100000, guid: 993b248c5731e724d88422d8635334a8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tapatrashbin.png
+    second: {fileID: 2100000, guid: a475c4ebaf0988c42b1c094e8723cd9b, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
