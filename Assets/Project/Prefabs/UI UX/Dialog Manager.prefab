@@ -236,9 +236,9 @@ MonoBehaviour:
   dialoguePanel: {fileID: 3643411992178415777}
   dialogueText: {fileID: 8449148846689978389}
   dialogueLines:
-  - 'It seems she is not here... I am late... '
-  - She is already on a plane to Beijing.
-  - But I won't give up, this doesn't end here.
+  - I'm in! Now I have to find documents or a lead.
+  - Huh? This paper says that she is not already here.
+  - Even maybe she is not here, maybe she is already in a plane to China.
   typingTime: 0.05
   interact: {fileID: 3001919216989983466, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   inputDebounce: 0.15
@@ -276,8 +276,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 68.9295, y: 109}
-  m_SizeDelta: {x: -319.667, y: 96.1788}
+  m_AnchoredPosition: {x: 90.883, y: 106.805}
+  m_SizeDelta: {x: -363.573, y: 91.788}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1486882783334801309
 CanvasRenderer:
@@ -307,7 +307,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: 'Lorem
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ffd990ad8e3e42d4bb3fa6bf427280de, type: 2}
   m_sharedMaterial: {fileID: -2738584433077570632, guid: ffd990ad8e3e42d4bb3fa6bf427280de, type: 2}
@@ -316,7 +318,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4278190080
   m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
