@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -20,10 +21,28 @@ public class BombThrower : MonoBehaviour
     private Vector3 facing;
     private int currentCharges;
     private float cooldownTimer;
+    private int remainingTime = 0;
     private Coroutine cooldownLogger;
     private bool isThrowing = false;
     private Vector3 spawnReference;
     private PlayerMovement playerMovement;
+    private event Action cooldownLoggerEvent;
+    public event Action CooldownLoggerEvent
+    {
+        add { cooldownLoggerEvent += value; }
+        remove { cooldownLoggerEvent -= value; }
+    }
+
+    private event Action currentChargesLoggerEvent;
+    public event Action CurrentChargesLoggerEvent
+    {
+        add { currentChargesLoggerEvent += value; }
+        remove { currentChargesLoggerEvent -= value; }
+    }
+    public bool Active { set; get; } = true;
+
+    public float CooldownTimer => remainingTime;
+    public int CurrentCharges => currentCharges;
 
     private void Awake()
     {
@@ -41,9 +60,9 @@ public class BombThrower : MonoBehaviour
         playerMovement = GetComponent<PlayerMovement>();
     }
 
-    public void RestoreCharges(int amount)
+    public void RestoreCharges()
     {
-        currentCharges = Mathf.Min(currentCharges + amount, maxCharges);
+        currentCharges = maxCharges;
     }
 
     private void OnEnable()
@@ -56,6 +75,8 @@ public class BombThrower : MonoBehaviour
 
     private void Update()
     {
+        if (!Active)
+            return;
         if (cooldownTimer > 0f)
             cooldownTimer -= Time.deltaTime;
 
@@ -75,6 +96,7 @@ public class BombThrower : MonoBehaviour
             return;
 
         currentCharges--;
+        currentChargesLoggerEvent?.Invoke();
         cooldownTimer = cooldownPerCharge;
         facing = lastDirection != Vector3.zero ? lastDirection : Vector3.forward * -1f;// Si no hay dirección, apunta hacia adelante
         OnThrowAnimation();
@@ -128,10 +150,13 @@ public class BombThrower : MonoBehaviour
     {
         while (cooldownTimer > 0f)
         {
-            Debug.Log($"Cooldown: {cooldownTimer:F1}s");
-            yield return new WaitForSeconds(1.6f);
+            remainingTime = Mathf.CeilToInt(cooldownTimer);
+            Debug.Log($"Cooldown: {remainingTime}s");
+            cooldownLoggerEvent?.Invoke();
+            yield return new WaitForSeconds(1f);
         }
-
+        remainingTime = 0;
+        cooldownLoggerEvent?.Invoke();
         cooldownLogger = null;
     }
 
